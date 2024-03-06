@@ -9,8 +9,8 @@ export interface HeaderProps {
 
 export default function Header({ children }: HeaderProps) {
   return (
-    <header className="border-b border-solid border-white01">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-32 py-6  ">
+    <header className="border-b border-b-white01">
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-6 container ">
         <Logo />
         <Navigations />
         <AuthBtn />

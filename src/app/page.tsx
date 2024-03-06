@@ -3,7 +3,7 @@ import HeroImg from "./components/HeroImg/Heroimg";
 import { GoArrowUpRight } from "react-icons/go";
 export default function Home() {
   return (
-    <main className="max-w-7xl mx-auto flex items-center justify-between py-20 px-28">
+    <main className="max-w-7xl mx-auto flex items-center justify-between py-20 container">
       <div className=" w-[595px]">
         <h1 className="mb-5 text-7xl font-semibold text-black leading-none">
           The road to the <span className="text-green italic">depths</span> of
