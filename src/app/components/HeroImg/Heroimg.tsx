@@ -13,7 +13,7 @@ export default function HeroImg() {
         alt="Psyhologist"
         width={`464`}
         height={`526`}
-        priority={false}
+        priority={true}
       />
       <div className="w-10 h-10 bg-purple flex items-center justify-center rounded-[10px] absolute top-[185px] -left-8 -rotate-15">
         <FaQuestion className="w-5 h-5 fill-white" />

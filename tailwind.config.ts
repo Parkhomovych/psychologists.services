@@ -20,7 +20,9 @@ const config: Config = {
       hoverOrange: "#f37113",
       white01: "rgba(25, 26, 21, 0.1);",
       white02: "rgba(25, 26, 21, 0.2);",
-      white05: ' rgba(251, 251, 251, 0.5);' 
+      white06: 'rgba(25, 26, 21, 0.6);',
+      white05: 'rgba(251, 251, 251, 0.5);',
+
 
     },
     rotate: {
