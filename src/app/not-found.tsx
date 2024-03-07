@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function NotFound() {
   const [time, setTime] = useState(10);
   const router = useRouter();
-  
+
   useEffect(() => {
     const idTimeout = setInterval(() => {
       setTime((pS) => pS - 1);
@@ -37,7 +37,7 @@ export default function NotFound() {
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
             href="/"
-            className="rounded-md bg-green px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-hoverGreen focus:bg-hoverGreen focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hoverGreen"
+            className="rounded-md bg-green px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-activeGreen focus:bg-activeGreen focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-activeGreen animateColor"
           >
             Go back home
           </Link>

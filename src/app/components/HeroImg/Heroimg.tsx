@@ -1,7 +1,7 @@
 import Image from "next/image";
 import hero from "@/app/components/HeroImg/hero.jpeg";
-import { IoMdPeople } from "react-icons/io";
 import { FaQuestion } from "react-icons/fa6";
+import { IoMdPeople } from "react-icons/io";
 import { BsCheckLg } from "react-icons/bs";
 
 export default function HeroImg() {
@@ -15,7 +15,7 @@ export default function HeroImg() {
         height={`526`}
         priority={true}
       />
-      <div className="w-10 h-10 bg-purple flex items-center justify-center rounded-[10px] absolute top-[185px] -left-8 -rotate-15">
+      <div className="w-10 h-10 flex items-center justify-center absolute top-[185px] -left-8 -rotate-15 bg-purple rounded-[10px]">
         <FaQuestion className="w-5 h-5 fill-white" />
       </div>
       <div
@@ -24,7 +24,7 @@ export default function HeroImg() {
       >
         <IoMdPeople className="w-5 h-5 fill-white" />
       </div>
-      <div className="flex items-center gap-x-4 w-80 h-28 bg-green px-8 absolute z-10 bottom-16 -left-28 rounded-[20px]">
+      <div className="flex items-center gap-x-4 w-80 h-28 bg-green px-8 absolute bottom-16 -left-28 rounded-[20px]">
         <div className=" w-14 h-14 bg-white rounded-xl flex items-center justify-center">
           <BsCheckLg className="text-green w-8 h-8" />
         </div>

@@ -15,19 +15,15 @@ const config: Config = {
       orange: "#fc832c",
       yellow: "#FBC75E",
       purple: '#4535af',
-      hoverGreen: "#36a379",
-      hoverBlue: "#255ee8",
-      hoverOrange: "#f37113",
+      activeGreen: "#36a379",
+      activeBlue: "#255ee8",
+      activeOrange: "#f37113",
       white01: "rgba(25, 26, 21, 0.1);",
       white02: "rgba(25, 26, 21, 0.2);",
       white06: 'rgba(25, 26, 21, 0.6);',
       white05: 'rgba(251, 251, 251, 0.5);',
 
 
-    },
-    rotate: {
-      15: "15deg",
-      m15: "-15deg"
     },
   },
   plugins: [],
