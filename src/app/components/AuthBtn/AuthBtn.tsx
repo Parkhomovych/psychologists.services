@@ -11,7 +11,7 @@ export default function AuthBtn() {
       </Link>
       <Link
         href="/registration"
-        className="w-42 h-12 py-3 px-10 rounded-full bg-green hover:bg-activeGreen animateColor text-white"
+        className="w-42 h-12 py-3 px-10  bg-green rounded-full text-white hover:bg-activeGreen animateColor"
       >
         <span className="text-base font-medium leading-5"> Registration</span>
       </Link>
