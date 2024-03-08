@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import RedirectTo from "../components/RedirectTo/RedirectTo";
 
 export default function Login() {
-  redirect("/");
+  return (
+    <>
+      <RedirectTo to="/" />
+    </>
+  );
 }

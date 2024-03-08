@@ -1,0 +1,39 @@
+"use client";
+import IconCloseModal from "../IconCloseModal/IconCloseModal";
+import { useEffect } from "react";
+
+type Props = {
+  children: any;
+  style: string;
+  closeModal: () => void;
+};
+export default function Modal({ children, style, closeModal }: Props) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === "Escape") {
+        closeModal();
+      }
+    };
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "auto";
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeModal]);
+  return (
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          closeModal();
+        }
+      }}
+      className="backdrop"
+    >
+      <div className={`modal ${style}`}>
+        <IconCloseModal close={closeModal} />
+        {children}
+      </div>
+    </div>
+  );
+}

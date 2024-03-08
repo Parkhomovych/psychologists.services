@@ -1,11 +1,18 @@
-import Link from "next/link";
+"use client";
+import { useState } from "react";
 import { Review } from "../List-of-psychologists/ListOfPsichologists";
 import { IoIosStar } from "react-icons/io";
+import MakeModal from "../MakeModal/MakeModal";
 
 type ReviewersProps = {
   review: Review[];
+  name?: string | undefined;
 };
-export default function Reviewers({ review }: ReviewersProps) {
+export default function Reviewers({ review, name }: ReviewersProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleModal = () => {
+    setIsOpen((pS) => !pS);
+  };
   return (
     <>
       <ul className="mb-10 flex flex-col gap-y-6">
@@ -29,12 +36,13 @@ export default function Reviewers({ review }: ReviewersProps) {
           </li>
         ))}
       </ul>
-      <Link
-        href="psychologists/make_an_appointment"
+      <button
+        onClick={() => setIsOpen(true)}
         className="px-8 py-3 bg-green rounded-[30px] hover:bg-activeGreen animateColor text-white"
       >
         Make an appointment
-      </Link>
+      </button>
+      {isOpen && <MakeModal closeModal={handleModal} name={name} />}
     </>
   );
 }

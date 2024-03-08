@@ -9,10 +9,10 @@
 
 /* Modal */
 .backdrop {
-  @apply absolute top-0 left-0 z-10 bg-white06 w-screen h-screen;
+  @apply fixed top-0 left-0 z-10 bg-white06 w-screen h-screen;
 }
 .modal {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[566px] min-h-[510px] rounded-[30px] bg-white p-16;
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[30px] bg-white p-16;
 }
 /* Modal */
 
@@ -26,5 +26,5 @@
 /* Animation */
 
 .input {
-  @apply w-[438px] h-[52px] px-[18px] py-4 rounded-xl border-solid border border-white01 outline-green placeholder:text-black;
+  @apply px-[18px] py-4 rounded-xl border-solid border border-white01 outline-green placeholder:text-black;
 }

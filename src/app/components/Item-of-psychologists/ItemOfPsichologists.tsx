@@ -12,7 +12,7 @@ type Props = {
   item: Therapist;
 };
 export default function ItemOfPsichologists({ item }: Props) {
-  const [readMore, setReadMore] = useState(true);
+  const [readMore, setReadMore] = useState(false);
   const [isFavorite, setisFavorite] = useState(false);
 
   return (
@@ -29,10 +29,10 @@ export default function ItemOfPsichologists({ item }: Props) {
           type="button"
           className={clsx(
             `hover:text-activeGreen animateColor`,
-            readMore ? `text-green` : `text-black`
+            isFavorite ? `text-green` : `text-black`
           )}
         >
-          {readMore ? (
+          {isFavorite ? (
             <FaHeart className="w-[26px] h-[26px]" />
           ) : (
             <FaRegHeart className="w-[26px] h-[26px]" />
