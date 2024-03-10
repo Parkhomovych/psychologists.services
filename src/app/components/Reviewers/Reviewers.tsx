@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Review } from "../List-of-psychologists/ListOfPsichologists";
 import { IoIosStar } from "react-icons/io";
 import MakeModal from "../MakeModal/MakeModal";
+import { AnimatePresence, motion } from "framer-motion";
+import PresenceModal from "../PresenceModal/PresenceModal";
 
 type ReviewersProps = {
   review: Review[];
@@ -42,7 +44,9 @@ export default function Reviewers({ review, name }: ReviewersProps) {
       >
         Make an appointment
       </button>
-      {isOpen && <MakeModal closeModal={handleModal} name={name} />}
+      <PresenceModal isOpen={isOpen}>
+        <MakeModal closeModal={handleModal} name={name} />
+      </PresenceModal>
     </>
   );
 }

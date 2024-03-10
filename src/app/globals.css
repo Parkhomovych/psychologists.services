@@ -26,5 +26,5 @@
 /* Animation */
 
 .input {
-  @apply px-[18px] py-4 rounded-xl border-solid border border-white01 outline-green placeholder:text-black;
+  @apply px-[18px] py-3.5 rounded-xl border-solid border border-white01 outline-green placeholder:text-black;
 }

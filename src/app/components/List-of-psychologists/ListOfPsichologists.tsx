@@ -22,10 +22,13 @@ export interface Therapist {
 
 export default function ListOfPsichologists() {
   return (
-    <ul className=" flex flex-col gap-y-8  items-center">
-      {info.map((item) => (
-        <ItemOfPsichologists key={item.name} item={item} />
-      ))}
-    </ul>
+    <>
+      <ul className=" flex flex-col gap-y-8  items-center">
+        {info.map((item) => (
+          <ItemOfPsichologists key={item.name} item={item} />
+        ))}
+      </ul>
+      <div id="modal-box"></div>
+    </>
   );
 }

@@ -2,6 +2,7 @@
 import IconCloseModal from "../IconCloseModal/IconCloseModal";
 import { useEffect } from "react";
 
+
 type Props = {
   children: any;
   style: string;
@@ -23,12 +24,12 @@ export default function Modal({ children, style, closeModal }: Props) {
   }, [closeModal]);
   return (
     <div
+      className="backdrop overflow-auto"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           closeModal();
         }
       }}
-      className="backdrop"
     >
       <div className={`modal ${style}`}>
         <IconCloseModal close={closeModal} />

@@ -7,38 +7,17 @@ import { Therapist } from "../List-of-psychologists/ListOfPsichologists";
 import Image from "next/image";
 import Reviewers from "../Reviewers/Reviewers";
 import clsx from "clsx";
+import PresenceHeight from "../PresenceHeight/PresenceHeight";
 
 type Props = {
   item: Therapist;
 };
 export default function ItemOfPsichologists({ item }: Props) {
-  const [readMore, setReadMore] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isFavorite, setisFavorite] = useState(false);
 
   return (
-    <li className="flex gap-x-6 p-6 w-[1184px] relative bg-white rounded-3xl">
-      <div className="flex items-center absolute top-6 right-6">
-        <IoIosStar className=" w-4 h-4 text-yellow mr-2" />
-        <p className="mr-4">Rating:&nbsp;{item.rating}</p>
-        <p className="mr-7">
-          Price / 1 hour:&nbsp;
-          <span className="text-[#38cd3e]">{item.price_per_hour}$</span>
-        </p>
-        <button
-          onClick={() => setisFavorite((pS) => !pS)}
-          type="button"
-          className={clsx(
-            `hover:text-activeGreen animateColor`,
-            isFavorite ? `text-green` : `text-black`
-          )}
-        >
-          {isFavorite ? (
-            <FaHeart className="w-[26px] h-[26px]" />
-          ) : (
-            <FaRegHeart className="w-[26px] h-[26px]" />
-          )}
-        </button>
-      </div>
+    <li className="flex gap-x-6 p-6 w-[1184px] bg-white rounded-3xl">
       <div>
         <div className="relative flex items-center justify-center w-[120px] h-[120px] rounded-[30px] border-solid border-2 border-[#54be9633] ">
           <Image
@@ -54,7 +33,33 @@ export default function ItemOfPsichologists({ item }: Props) {
         </div>
       </div>
       <div>
-        <p className="mb-1 font-medium text-base text-white06">Psychologist</p>
+        <div className=" flex justify-between">
+          <p className="mb-1 font-medium text-base text-white06">
+            Psychologist
+          </p>
+          <div className="flex items-center">
+            <IoIosStar className=" w-4 h-4 text-yellow mr-2" />
+            <p className="mr-4">Rating:&nbsp;{item.rating}</p>
+            <p className="mr-7">
+              Price / 1 hour:&nbsp;
+              <span className="text-[#38cd3e]">{item.price_per_hour}$</span>
+            </p>
+            <button
+              onClick={() => setisFavorite((pS) => !pS)}
+              type="button"
+              className={clsx(
+                `hover:text-activeGreen animateColor`,
+                isFavorite ? `text-green` : `text-black`
+              )}
+            >
+              {isFavorite ? (
+                <FaHeart className="w-[26px] h-[26px]" />
+              ) : (
+                <FaRegHeart className="w-[26px] h-[26px]" />
+              )}
+            </button>
+          </div>
+        </div>
         <h3 className="mb-6 font-medium text-2xl">{item.name}</h3>
         <ul className="max-w-[870px] mb-6 flex flex-wrap gap-x-1 gap-y-2">
           <li className="">
@@ -86,13 +91,15 @@ export default function ItemOfPsichologists({ item }: Props) {
           {item.about}
         </p>
         <button
-          onClick={() => setReadMore((pS) => !pS)}
+          onClick={() => setIsOpen((pS) => !pS)}
           className="mb-3.5 text-black font-medium after:block underline underline-offset-[3px]"
           type="button"
         >
           Read more
         </button>
-        {readMore && <Reviewers review={item.reviews} />}
+        <PresenceHeight isOpen={isOpen}>
+          <Reviewers review={item.reviews} />
+        </PresenceHeight>
       </div>
     </li>
   );
