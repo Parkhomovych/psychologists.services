@@ -57,10 +57,10 @@ export default function MakeModal({ name, image, closeModal }: Props) {
     <Modal closeModal={closeModal} style="w-[600px]">
       <div className="flex flex-col gap-y-10">
         <div>
-          <h2 className="mb-5 font-medium text-4xl">
+          <h2 className="mb-5 font-medium text-4xl ">
             Make an appointment with a psychologists
           </h2>
-          <p className="font-normal text-base text-white06">
+          <p className="font-normal text-base text-white06  dark:text-gray-400">
             You are on the verge of changing your life for the better. Fill out
             the short form below to book your personal appointment with a
             professional psychologist. We guarantee confidentiality and respect
@@ -76,10 +76,10 @@ export default function MakeModal({ name, image, closeModal }: Props) {
             className=" rounded-[15px]"
           />
           <div>
-            <p className="mb-1 font-medium text-xs text-white06">
+            <p className="mb-1 font-medium text-xs text-white06 dark:text-gray-400">
               Your psychologists
             </p>
-            <h4 className="font-medium text-base text-black">{name}</h4>
+            <h4 className="font-medium text-base">{name}</h4>
           </div>
         </div>
         <form className="flex flex-col">
@@ -116,7 +116,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="  absolute top-[61.23px] right-[-1px] w-[151px] h-[179px] p-4 bg-[#fff] rounded-xl"
+                    className="absolute top-[61.23px] right-[-1px] w-[151px] h-[179px] p-4 bg-[#fff] dark:bg-gray-800 rounded-xl"
                   >
                     <p className="mb-4 text-center">Meeting time</p>
                     <ul

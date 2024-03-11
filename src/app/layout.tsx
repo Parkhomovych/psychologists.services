@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import React from "react";
+import Header from "./components/Header/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -13,8 +14,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className=" bg-white">
-      <body className={`${inter.className}`}>{children}</body>
+    <html lang="en">
+      <body
+        className={`${inter.className} bg-white dark:bg-gray-900 text-black dark:text-gray-50 `}
+      >
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

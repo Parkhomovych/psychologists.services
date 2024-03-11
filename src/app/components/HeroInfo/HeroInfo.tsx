@@ -4,11 +4,11 @@ import { GoArrowUpRight } from "react-icons/go";
 export default function HeroInfo() {
   return (
     <div className=" w-[595px]">
-      <h1 className="mb-5 text-7xl font-semibold text-black leading-none">
+      <h1 className="mb-5 text-7xl font-semibold text-black dark:text-gray-50 leading-none">
         The road to the <span className="text-green italic">depths</span> of the
         human soul
       </h1>
-      <p className="mb-10 text-lg text-black">
+      <p className="mb-10 text-lg text-black dark:text-gray-50">
         We help you to reveal your potential, overcome challenges and find a
         guide in your own life with the help of our <br /> experienced
         psychologists.

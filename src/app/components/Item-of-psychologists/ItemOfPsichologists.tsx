@@ -8,6 +8,7 @@ import Image from "next/image";
 import Reviewers from "../Reviewers/Reviewers";
 import clsx from "clsx";
 import PresenceHeight from "../PresenceHeight/PresenceHeight";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 type Props = {
   item: Therapist;
@@ -17,7 +18,7 @@ export default function ItemOfPsichologists({ item }: Props) {
   const [isFavorite, setisFavorite] = useState(false);
 
   return (
-    <li className="flex gap-x-6 p-6 w-[1184px] bg-white rounded-3xl">
+    <li className="flex gap-x-6 p-6 w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
       <div>
         <div className="relative flex items-center justify-center w-[120px] h-[120px] rounded-[30px] border-solid border-2 border-[#54be9633] ">
           <Image
@@ -34,13 +35,15 @@ export default function ItemOfPsichologists({ item }: Props) {
       </div>
       <div>
         <div className=" flex justify-between">
-          <p className="mb-1 font-medium text-base text-white06">
+          <p className="mb-1 font-medium text-base text-white06 dark:text-gray-400">
             Psychologist
           </p>
           <div className="flex items-center">
             <IoIosStar className=" w-4 h-4 text-yellow mr-2" />
-            <p className="mr-4">Rating:&nbsp;{item.rating}</p>
-            <p className="mr-7">
+            <p className="mr-4 text-black dark:text-gray-50">
+              Rating:&nbsp;{item.rating}
+            </p>
+            <p className="mr-7 text-black dark:text-gray-50">
               Price / 1 hour:&nbsp;
               <span className="text-[#38cd3e]">{item.price_per_hour}$</span>
             </p>
@@ -49,7 +52,7 @@ export default function ItemOfPsichologists({ item }: Props) {
               type="button"
               className={clsx(
                 `hover:text-activeGreen hover:scale-125 transition-all duration-300 `,
-                isFavorite ? `text-green` : `text-black`
+                isFavorite ? `text-green` : `text-black dark:text-gray-200`
               )}
             >
               {isFavorite ? (
@@ -60,42 +63,57 @@ export default function ItemOfPsichologists({ item }: Props) {
             </button>
           </div>
         </div>
-        <h3 className="mb-6 font-medium text-2xl">{item.name}</h3>
+        <h3 className="mb-6 font-medium text-2xl text-black dark:text-gray-50">
+          {item.name}
+        </h3>
         <ul className="max-w-[870px] mb-6 flex flex-wrap gap-x-1 gap-y-2">
-          <li className="">
-            <p className="px-4 py-2  bg-[#f3f3f3] rounded-3xl text-white06 font-medium text-base">
+          <li>
+            <p className="px-4 py-2  bg-[#f3f3f3] dark:bg-gray-700 dark:text-gray-400 rounded-3xl text-white06 font-medium text-base">
               Experience:&nbsp;
-              <span className=" text-black">{item.experience}</span>
+              <span className="text-black dark:text-gray-50">
+                {item.experience}
+              </span>
             </p>
           </li>
-          <li className="">
-            <p className="px-4 py-2  bg-[#f3f3f3] rounded-3xl text-white06 font-medium text-base">
+          <li>
+            <p className="px-4 py-2  bg-[#f3f3f3] dark:bg-gray-700 dark:text-gray-400 rounded-3xl text-white06 font-medium text-base">
               License:&nbsp;
-              <span className=" text-black">{item.license}</span>
+              <span className=" text-black dark:text-gray-50">
+                {item.license}
+              </span>
             </p>
           </li>
-          <li className="">
-            <p className="px-4 py-2  bg-[#f3f3f3] rounded-3xl text-white06 font-medium text-base">
+          <li>
+            <p className="px-4 py-2  bg-[#f3f3f3] dark:bg-gray-700 dark:text-gray-400 rounded-3xl text-white06 font-medium text-base">
               Specialization:&nbsp;
-              <span className=" text-black">{item.specialization}</span>
+              <span className=" text-black dark:text-gray-50">
+                {item.specialization}
+              </span>
             </p>
           </li>
-          <li className="">
-            <p className="px-4 py-2  bg-[#f3f3f3] rounded-3xl text-white06 font-medium text-base">
+          <li>
+            <p className="px-4 py-2  bg-[#f3f3f3] dark:bg-gray-700 dark:text-gray-400 rounded-3xl text-white06 font-medium text-base">
               Initial_consultation:&nbsp;
-              <span className=" text-black">{item.initial_consultation}</span>
+              <span className=" text-black dark:text-gray-50">
+                {item.initial_consultation}
+              </span>
             </p>
           </li>
         </ul>
-        <p className=" mb-3.5 text-sm text-white06  font-normal">
+        <p className=" mb-3.5 text-sm text-white06 dark:text-gray-400  font-normal">
           {item.about}
         </p>
         <button
           onClick={() => setIsOpen((pS) => !pS)}
-          className="mb-3.5 text-black font-medium after:block underline underline-offset-[3px]"
+          className="mb-3.5 flex items-end gap-x-1 text-black dark:text-gray-50 hover:text-activeGreen animateColor font-medium after:block underline underline-offset-[3px]"
           type="button"
         >
-          Read more
+          <span>Read more</span>
+          {isOpen ? (
+            <IoIosArrowUp className=" w-[20px] h-[20px]" />
+          ) : (
+            <IoIosArrowDown className=" w-[20px] h-[20px]" />
+          )}
         </button>
         <PresenceHeight isOpen={isOpen}>
           <Reviewers

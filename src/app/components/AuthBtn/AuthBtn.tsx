@@ -17,9 +17,9 @@ export default function AuthBtn() {
     <div>
       <button
         onClick={handlerOpenLog}
-        className="mr-3.5 w-31 h-12 py-3 px-9 border-solid border border-white02 hover:border-activeGreen active:border-activeGreen animateColor rounded-full "
+        className="w-31 h-12 mr-3.5 py-3 px-9 text-black dark:text-gray-50 leading-5 border-white02 dark:border-gray-600 border rounded-full text-base font-medium  hover:text-activeGreen active:text-activeGree hover:border-activeGreen active:border-activeGreen animateColor "
       >
-        <span className="text-base font-medium leading-5">Log In</span>
+        <span>Log In</span>
       </button>
       <button
         onClick={handlerOpenReg}

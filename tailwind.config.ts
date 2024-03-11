@@ -19,10 +19,14 @@ const config: Config = {
         activeGreen: "#36a379",
         activeBlue: "#255ee8",
         activeOrange: "#f37113",
-        white01: "rgba(25, 26, 21, 0.1);",
-        white02: "rgba(25, 26, 21, 0.2);",
-        white06: 'rgba(25, 26, 21, 0.6);',
+        black01: "rgba(25, 26, 21, 0.1);",
+        black02: "rgba(25, 26, 21, 0.2);",
+        black06: 'rgba(25, 26, 21, 0.6);',
         white05: 'rgba(251, 251, 251, 0.5);',
+        white01: 'rgba(251, 251, 251, 0.1);',
+
+
+
       },
     }
   },

@@ -25,16 +25,16 @@ export default function Reviewers({ reviews, name, image }: ReviewersProps) {
                 <span className="text-green text-xl">{item.reviewer[0]}</span>
               </div>
               <div>
-                <h4 className="font-medium text-black text-base">
+                <h4 className="font-medium text-black text-base dark:text-gray-50">
                   {item.reviewer}
                 </h4>
                 <p className="flex gap-y-2 items-center">
                   <IoIosStar className=" w-4 h-4 text-yellow mr-2" />
-                  <span className=" font-medium text-black">{item.rating}</span>
+                  <span className=" font-medium text-black dark:text-gray-50">{item.rating}</span>
                 </p>
               </div>
             </div>
-            <p className=" text-base text-white06">{item.comment}</p>
+            <p className=" text-base text-white06 dark:text-gray-400">{item.comment}</p>
           </li>
         ))}
       </ul>

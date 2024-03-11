@@ -25,8 +25,12 @@ export default function AuthModal({ h2, p, closeModal }: ModalProps) {
       style="w-[566px] min-h-[510px] flex flex-col gap-y-10"
     >
       <div>
-        <h2 className="mb-5 font-medium text-4xl ">{h2}</h2>
-        <p className=" font-normal text-base text-white06">{p}</p>
+        <h2 className="mb-5 font-medium text-4xl text-black dark:text-gray-50">
+          {h2}
+        </h2>
+        <p className=" font-normal text-base text-white06  dark:text-gray-500">
+          {p}
+        </p>
       </div>
       <form className="flex flex-wrap gap-y-[18px]">
         {h2 === "Registration" && (
@@ -53,7 +57,7 @@ export default function AuthModal({ h2, p, closeModal }: ModalProps) {
 
           <button
             type="button"
-            className=" w-5 h-5 absolute top-4 right-[18px]"
+            className=" w-5 h-5 absolute top-4 right-[18px] text-black dark:text-gray-50 hover:text-activeGreen active:text-activeGreen animateColor"
             onClick={hendlePass}
           >
             {showPass ? (
