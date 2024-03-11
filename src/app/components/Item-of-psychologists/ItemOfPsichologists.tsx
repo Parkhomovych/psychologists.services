@@ -48,7 +48,7 @@ export default function ItemOfPsichologists({ item }: Props) {
               onClick={() => setisFavorite((pS) => !pS)}
               type="button"
               className={clsx(
-                `hover:text-activeGreen animateColor`,
+                `hover:text-activeGreen hover:scale-125 transition-all duration-300 `,
                 isFavorite ? `text-green` : `text-black`
               )}
             >
@@ -98,7 +98,11 @@ export default function ItemOfPsichologists({ item }: Props) {
           Read more
         </button>
         <PresenceHeight isOpen={isOpen}>
-          <Reviewers review={item.reviews} />
+          <Reviewers
+            reviews={item.reviews}
+            name={item.name}
+            image={item.avatar_url}
+          />
         </PresenceHeight>
       </div>
     </li>

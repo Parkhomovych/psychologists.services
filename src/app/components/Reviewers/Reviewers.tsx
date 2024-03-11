@@ -3,14 +3,14 @@ import { useState } from "react";
 import { Review } from "../List-of-psychologists/ListOfPsichologists";
 import { IoIosStar } from "react-icons/io";
 import MakeModal from "../MakeModal/MakeModal";
-import { AnimatePresence, motion } from "framer-motion";
 import PresenceModal from "../PresenceModal/PresenceModal";
 
 type ReviewersProps = {
-  review: Review[];
-  name?: string | undefined;
+  reviews: Review[];
+  name: string;
+  image: string;
 };
-export default function Reviewers({ review, name }: ReviewersProps) {
+export default function Reviewers({ reviews, name, image }: ReviewersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const handleModal = () => {
     setIsOpen((pS) => !pS);
@@ -18,7 +18,7 @@ export default function Reviewers({ review, name }: ReviewersProps) {
   return (
     <>
       <ul className="mb-10 flex flex-col gap-y-6">
-        {review.map((item) => (
+        {reviews.map((item) => (
           <li className="" key={item.reviewer}>
             <div className="flex gap-x-3 mb-4">
               <div className="w-11 h-11 flex items-center justify-center bg-[#54be9633] rounded-full">
@@ -45,7 +45,7 @@ export default function Reviewers({ review, name }: ReviewersProps) {
         Make an appointment
       </button>
       <PresenceModal isOpen={isOpen}>
-        <MakeModal closeModal={handleModal} name={name} />
+        <MakeModal closeModal={handleModal} name={name} image={image} />
       </PresenceModal>
     </>
   );

@@ -12,7 +12,7 @@
   @apply fixed top-0 left-0 z-10 bg-white06 w-screen h-screen;
 }
 .modal {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[30px] bg-white p-16;
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[30px] bg-[#fbfbfb] p-16;
 }
 /* Modal */
 
@@ -25,6 +25,15 @@
 }
 /* Animation */
 
+/* Form */
 .input {
   @apply px-[18px] py-3.5 rounded-xl border-solid border border-white01 outline-green placeholder:text-black;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari, Edge, Opera */
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+/* Form */

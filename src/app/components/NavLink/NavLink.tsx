@@ -14,8 +14,9 @@ export default function NavLink({ href, children }: NavLinkProps) {
   return (
     <Link
       className={clsx(
-        "text-black hover:text-activeGreen animateColor",
-        path === href && "text-green"
+        "relative text-black text-base hover:text-activeGreen hover:scale-125 transition-all duration-300  ",
+        path === href &&
+          "after:absolute after:left-[50%] after:translate-x-[-50%] after:block after:w-2 after:h-2 after:rounded-full after:bg-green"
       )}
       href={href}
     >
