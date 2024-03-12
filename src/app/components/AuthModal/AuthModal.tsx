@@ -38,21 +38,21 @@ export default function AuthModal({ h2, p, closeModal }: ModalProps) {
             type="text"
             name="name"
             placeholder="Name"
-            className="input w-[438px] h-[52px] "
+            className="input w-[438px] "
           />
         )}
         <input
           type="email"
           name="email"
           placeholder="Email"
-          className="input w-[438px] h-[52px] "
+          className="input w-[438px] "
         />
         <div className=" relative">
           <input
             type={showPass ? "text" : "password"}
             name="password"
             placeholder="Password"
-            className="input w-[438px] h-[52px] "
+            className="input w-[438px] "
           />
 
           <button

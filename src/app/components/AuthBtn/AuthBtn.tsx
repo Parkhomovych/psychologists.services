@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import AuthModal from "../AuthModal/AuthModal";
+import { motion, AnimatePresence } from "framer-motion";
+
 import PresenceModal from "../PresenceModal/PresenceModal";
 
 export default function AuthBtn() {

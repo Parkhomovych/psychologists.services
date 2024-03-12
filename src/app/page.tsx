@@ -2,11 +2,9 @@ import HeroImg from "./components/HeroImg/Heroimg";
 import HeroInfo from "./components/HeroInfo/HeroInfo";
 export default function Home() {
   return (
-    <>
-      <main className="max-w-7xl mx-auto flex items-center justify-between py-20 container">
-        <HeroInfo />
-        <HeroImg />
-      </main>
-    </>
+    <main className="max-w-7xl mx-auto flex items-center justify-between py-20 container">
+      <HeroInfo />
+      <HeroImg />
+    </main>
   );
 }

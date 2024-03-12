@@ -3,7 +3,6 @@ import Modal from "../Modal/Modal";
 import { LuClock4 } from "react-icons/lu";
 import Image from "next/image";
 import { useState } from "react";
-import PresenceModal from "../PresenceModal/PresenceModal";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
@@ -15,13 +14,18 @@ export default function MakeModal({ name, image, closeModal }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [time, setTime] = useState("00:00");
 
-  const changeIsOpen = () => {
-    setIsOpen((pS) => !pS);
+  const changeIsOpen = (e: any) => {
+    const arr = ["INPUT", "svg", "polyline", "circle"];
+    const tag = e.target.tagName;
+    if (arr.includes(tag)) {
+      setIsOpen((pS) => !pS);
+    }
   };
   const changeTime = (e: any) => {
     if (e.target.tagName === "P") {
       const value = e.target.textContent.replace(/\s/g, "");
       setTime(value);
+      setIsOpen((pS) => !pS);
     }
   };
 
@@ -34,7 +38,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
         if (`${formattedHour}:${formattedMinute}` === time) {
           times.push(
             <li key={`${formattedHour}:${formattedMinute}`}>
-              <p className="font-normal text-base text-black hover:text-black animateColor">
+              <p className="font-normal text-base dark:text-gray-50 text-black ">
                 {formattedHour} : {formattedMinute}
               </p>
             </li>
@@ -43,7 +47,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
         }
         times.push(
           <li key={`${formattedHour}:${formattedMinute}`}>
-            <p className="font-normal text-base text-white02 hover:text-black animateColor">
+            <p className="font-normal text-base text-white02 hover:text-black dark:text-gray-400 dark:hover:text-gray-50 animateColor">
               {formattedHour} : {formattedMinute}
             </p>
           </li>

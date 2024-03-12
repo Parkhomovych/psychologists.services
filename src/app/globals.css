@@ -9,7 +9,7 @@
 
 /* Modal */
 .backdrop {
-  @apply fixed top-0 left-0 z-10 bg-black06 dark:bg-white01 w-screen h-screen;
+  @apply fixed top-0 left-0 z-10 bg-black06 dark:bg-white02 w-screen h-screen;
 }
 
 .modal {
@@ -31,7 +31,7 @@
 
 /* Form */
 .input {
-  @apply px-[18px] py-3.5 text-black dark:text-gray-50 bg-white dark:bg-gray-900 placeholder:text-black dark:placeholder:text-gray-50 focus-within:border-green rounded-xl border border-black01 dark:border-gray-700 outline-none;
+  @apply px-[18px] py-3.5 h-[52px] text-black dark:text-gray-50 bg-white dark:bg-gray-900 placeholder:text-black dark:placeholder:text-gray-50 focus-within:border-green rounded-xl border border-black01 dark:border-gray-700 outline-none;
 }
 
 input::-webkit-outer-spin-button,

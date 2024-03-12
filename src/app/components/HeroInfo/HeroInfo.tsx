@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroInfo() {
   return (
@@ -13,6 +14,7 @@ export default function HeroInfo() {
         guide in your own life with the help of our <br /> experienced
         psychologists.
       </p>
+
       <Link
         href="/psychologists"
         className=" w-56 h-14 flex justify-center items-center gap-x-1 rounded-full bg-green hover:bg-activeGreen animateColor text-white"

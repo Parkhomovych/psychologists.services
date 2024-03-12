@@ -34,7 +34,7 @@ export default function Reviewers({ reviews, name, image }: ReviewersProps) {
                 </p>
               </div>
             </div>
-            <p className=" text-base text-white06 dark:text-gray-400">{item.comment}</p>
+            <p className=" text-base text-white06 dark:text-gray-">{item.comment}</p>
           </li>
         ))}
       </ul>
