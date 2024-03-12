@@ -22,14 +22,17 @@ export interface Therapist {
   about: string;
 }
 
-// я фільтрую масив всіх психологів а треба лише ту частину яку бачить користувач. Вирішити це на стороні бекенду 
+// я фільтрую масив всіх психологів а треба лише ту частину яку бачить користувач. Вирішити це на стороні бекенду
 // типізувати функцію hendleFilter
 export default function ListOfPsichologists() {
   const [filter, setFilter] = useState("Show all");
 
-  const hendleFilter = (e: any) => {
-    if (e.target.tagName === "P") {
-      setFilter(e.target.textContent);
+  const hendleFilter = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === "P") {
+      setFilter(target.textContent || "");
     }
   };
 

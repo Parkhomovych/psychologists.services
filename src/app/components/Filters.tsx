@@ -13,13 +13,14 @@ const arr = [
 ];
 type Props = {
   filter: string;
-  hendleFilter: (e: any) => void;
+  hendleFilter: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
+type TagName = "INPUT" | "P" | "LI";
 export default function Filters({ filter, hendleFilter }: Props) {
   const [isOpen, setisOpen] = useState(false);
-  const hendleOpen = (e: any) => {
-    const tag = ["INPUT", "P", "LI"];
-    if (tag.includes(e.target.tagName)) {
+  const hendleOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const tag: TagName[] = ["INPUT", "P", "LI"];
+    if (tag.includes((event.target as HTMLElement).tagName as TagName)) {
       setisOpen((pS) => !pS);
     }
   };
