@@ -27,11 +27,9 @@ export interface Therapist {
 export default function ListOfPsichologists() {
   const [filter, setFilter] = useState("Show all");
 
-  const hendleFilter = (
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
+  const hendleFilter = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const target = e.target as HTMLElement;
-    if (target.tagName === "P") {
+    if (target.tagName === "P" || target.tagName === "LI") {
       setFilter(target.textContent || "");
     }
   };
