@@ -1,7 +1,7 @@
 import React from "react";
-import Navigations from "../Navigaiton/Navigations";
-import Logo from "../Logo/Logo";
-import AuthBtn from "../AuthBtn/AuthBtn";
+import Navigations from "./Navigations";
+import Logo from "./Logo";
+import AuthBtn from "./AuthBtn";
 
 export default function Header() {
   return (

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import AuthModal from "../AuthModal/AuthModal";
+import AuthModal from "./AuthModal";
 import { motion, AnimatePresence } from "framer-motion";
 
-import PresenceModal from "../PresenceModal/PresenceModal";
+import PresenceModal from "./PresenceModal";
 
 export default function AuthBtn() {
   const [isOpenLog, setIsOpenLog] = useState(false);

@@ -1,5 +1,5 @@
 "use client";
-import Modal from "../Modal/Modal";
+import Modal from "./Modal";
 import { LuClock4 } from "react-icons/lu";
 import Image from "next/image";
 import { useState } from "react";

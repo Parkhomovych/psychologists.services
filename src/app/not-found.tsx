@@ -1,5 +1,5 @@
 import Link from "next/link";
-import RedirectToHome from "./components/RedirectToHome/RedirectToHome";
+import RedirectToHome from "./components/RedirectToHome";
 
 export default function NotFound() {
   return (

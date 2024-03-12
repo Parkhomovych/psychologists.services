@@ -5,7 +5,7 @@ import { useState } from "react";
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 
-import Modal from "../Modal/Modal";
+import Modal from "./Modal";
 
 interface ModalProps {
   h2: string;

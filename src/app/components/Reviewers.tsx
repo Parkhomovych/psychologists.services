@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Review } from "../List-of-psychologists/ListOfPsichologists";
+import { Review } from "./ListOfPsichologists";
 import { IoIosStar } from "react-icons/io";
-import MakeModal from "../MakeModal/MakeModal";
-import PresenceModal from "../PresenceModal/PresenceModal";
+import MakeModal from "./MakeModal";
+import PresenceModal from "./PresenceModal";
 
 type ReviewersProps = {
   reviews: Review[];

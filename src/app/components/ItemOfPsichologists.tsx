@@ -3,11 +3,11 @@ import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
-import { Therapist } from "../List-of-psychologists/ListOfPsichologists";
+import { Therapist } from "./ListOfPsichologists";
 import Image from "next/image";
-import Reviewers from "../Reviewers/Reviewers";
+import Reviewers from "./Reviewers";
 import clsx from "clsx";
-import PresenceHeight from "../PresenceHeight/PresenceHeight";
+import PresenceHeight from "./PresenceHeight";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 

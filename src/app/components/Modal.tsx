@@ -1,5 +1,5 @@
 "use client";
-import IconCloseModal from "../IconCloseModal/IconCloseModal";
+import IconCloseModal from "./IconCloseModal";
 import { useEffect } from "react";
 
 

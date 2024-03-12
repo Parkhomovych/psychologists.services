@@ -1,4 +1,4 @@
-import { ListOfPsichologists } from "../components/List-of-psychologists/ListOfPsichologists";
+import ListOfPsichologists from "../components/ListOfPsichologists";
 
 export default function Psyhologists() {
   return (

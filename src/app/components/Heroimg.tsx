@@ -1,5 +1,5 @@
 import Image from "next/image";
-import hero from "@/app/components/HeroImg/hero.jpeg";
+
 import { FaQuestion } from "react-icons/fa6";
 import { IoMdPeople } from "react-icons/io";
 import { BsCheckLg } from "react-icons/bs";
@@ -9,7 +9,7 @@ export default function HeroImg() {
     <div className="relative">
       <Image
         className="rounded-xl"
-        src={hero}
+        src='/hero.jpeg'
         alt="Psyhologist"
         width={`464`}
         height={`526`}

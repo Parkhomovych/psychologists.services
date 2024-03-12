@@ -1,7 +1,7 @@
 "use client";
 import info from "@/app/psychologists.json";
-import ItemOfPsichologists from "../Item-of-psychologists/ItemOfPsichologists";
-import Filters from "../Filters/Filters";
+import ItemOfPsichologists from "./ItemOfPsichologists";
+import Filters from "./Filters";
 import { useState } from "react";
 export interface Review {
   reviewer: string;
@@ -21,18 +21,18 @@ export interface Therapist {
   initial_consultation: string;
   about: string;
 }
-export function ListOfPsichologists() {
+
+// я фільтрую масив всіх психологів а треба лише ту частину яку бачить користувач. Вирішити це на стороні бекенду 
+// типізувати функцію hendleFilter
+export default function ListOfPsichologists() {
   const [filter, setFilter] = useState("Show all");
-  const [page, setPage] = useState(1);
 
   const hendleFilter = (e: any) => {
     if (e.target.tagName === "P") {
       setFilter(e.target.textContent);
     }
   };
-  const handleMore = () => {
-    setPage((pS) => pS + 3);
-  };
+
   let cards = info;
   if (filter === "A to Z") {
     cards = [...info].sort((a, b) => a.name.localeCompare(b.name));
@@ -58,11 +58,10 @@ export function ListOfPsichologists() {
       <Filters filter={filter} hendleFilter={hendleFilter} />
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
         {cards.map((item, i) => {
-          return <ItemOfPsichologists  key={item.name} i={i} item={item} />;
+          return <ItemOfPsichologists key={item.name} i={i} item={item} />;
         })}
       </ul>
       <button
-        onClick={handleMore}
         type="button"
         className=" block mb-3.5 mx-auto py-3 px-12 text-white bg-green hover:bg-activeGreen animateColor rounded-[30px]"
       >
