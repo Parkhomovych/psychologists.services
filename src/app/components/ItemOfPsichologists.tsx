@@ -26,6 +26,7 @@ export default function ItemOfPsichologists({ item, i }: Props) {
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: -400, opacity: 0 }}
         transition={{ delay: 0.1 * i }}
+        className="flex gap-x-6 p-6 w-[1184px] bg-white dark:bg-gray-800 rounded-3xl"
       >
         <div>
           <div className="relative flex items-center justify-center w-[120px] h-[120px] rounded-[30px] border-solid border-2 border-[#54be9633] ">

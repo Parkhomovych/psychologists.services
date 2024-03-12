@@ -59,9 +59,9 @@ export default function MakeModal({ name, image, closeModal }: Props) {
 
   return (
     <Modal closeModal={closeModal} style="w-[600px]">
-      <div className="flex flex-col gap-y-10">
+      <div className="flex flex-col gap-y-8">
         <div>
-          <h2 className="mb-5 font-medium text-4xl ">
+          <h2 className="mb-4 font-medium text-4xl ">
             Make an appointment with a psychologists
           </h2>
           <p className="font-normal text-base text-white06  dark:text-gray-400">

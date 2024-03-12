@@ -22,7 +22,7 @@ export default function AuthModal({ h2, p, closeModal }: ModalProps) {
   return (
     <Modal
       closeModal={closeModal}
-      style="w-[566px] min-h-[510px] flex flex-col gap-y-10"
+      style="w-[566px]  flex flex-col gap-y-10"
     >
       <div>
         <h2 className="mb-5 font-medium text-4xl text-black dark:text-gray-50">
