@@ -13,7 +13,7 @@ type ReviewersProps = {
 export default function Reviewers({ reviews, name, image }: ReviewersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const handleModal = () => {
-    setIsOpen((pS) => !pS);
+    setIsOpen((pS:boolean) => !pS);
   };
   return (
     <>

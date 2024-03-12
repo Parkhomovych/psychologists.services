@@ -8,12 +8,12 @@ export default function RedirectToHome() {
   const router = useRouter();
 
   useEffect(() => {
-    const idTimeout = setInterval(() => {
-      setTime((pS) => pS - 1);
+    const idTimeout: NodeJS.Timeout = setInterval(() => {
+      setTime((pS: number) => pS - 1);
     }, 1000);
 
-    const idItnetval = setTimeout(() => {
-        router.push("/");
+    const idItnetval: NodeJS.Timeout = setTimeout(() => {
+      router.push("/");
     }, 10000);
 
     return () => {

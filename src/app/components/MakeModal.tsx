@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import { LuClock4 } from "react-icons/lu";
 import Image from "next/image";
 import { useState } from "react";
-import { AnimatePresence, Target, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
   name: string;
@@ -16,7 +16,6 @@ export default function MakeModal({ name, image, closeModal }: Props) {
 
   const changeIsOpen = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const arr = ["INPUT", "svg", "polyline", "circle"];
-
     const target = e.target as HTMLElement;
     if (arr.includes(target.tagName)) {
       setIsOpen((pS) => !pS);

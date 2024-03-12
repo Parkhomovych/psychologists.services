@@ -10,7 +10,7 @@ export interface NavLinkProps {
   href: string;
 }
 export default function NavLink({ href, children }: NavLinkProps) {
-  const path = usePathname();
+  const path: string = usePathname();
   return (
     <Link
       className={clsx(

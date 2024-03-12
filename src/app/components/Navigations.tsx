@@ -1,11 +1,7 @@
 import React from "react";
 import NavLink from "./NavLink";
 
-export interface NavigationsProps {
-  children?: React.ReactNode;
-}
-
-export default function Navigations({ children }: NavigationsProps) {
+export default function Navigations() {
   return (
     <nav>
       <ul className="flex gap-x-10">
