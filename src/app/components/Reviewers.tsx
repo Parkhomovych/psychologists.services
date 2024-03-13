@@ -5,7 +5,7 @@ import { IoIosStar } from "react-icons/io";
 import MakeModal from "./MakeModal";
 import PresenceModal from "./PresenceModal";
 
-type ReviewersProps = {
+export type ReviewersProps = {
   reviews: Review[];
   name: string;
   image: string;

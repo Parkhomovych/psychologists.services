@@ -1,8 +1,6 @@
-"use client";
 import info from "@/app/psychologists.json";
 import ItemOfPsichologists from "./ItemOfPsichologists";
-import Filters from "./Filters";
-import { useState } from "react";
+
 export interface Review {
   reviewer: string;
   rating: number;
@@ -22,41 +20,35 @@ export interface Therapist {
   about: string;
 }
 
-// я фільтрую масив всіх психологів а треба лише ту частину яку бачить користувач. Вирішити це на стороні бекенду
-// типізувати функцію hendleFilter
-export default function ListOfPsichologists() {
-  const [filter, setFilter] = useState("Show all");
+export default function ListOfPsichologists({ filter }: {filter: string}) {
+  let cards;
 
-  const hendleFilter = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    const target = e.target as HTMLElement;
-    if (target.tagName === "P" || target.tagName === "LI") {
-      setFilter(target.textContent || "");
-    }
-  };
-
-  let cards = info;
-  if (filter === "A to Z") {
-    cards = [...info].sort((a, b) => a.name.localeCompare(b.name));
-  }
-  if (filter === "Z to A") {
-    cards = [...info].sort((a, b) => b.name.localeCompare(a.name));
-  }
-  if (filter === "Popular") {
-    cards = [...info].sort((a, b) => b.rating - a.rating);
-  }
-  if (filter === "Not popular") {
-    cards = [...info].sort((a, b) => a.rating - b.rating);
-  }
-  if (filter === "Less than 10$") {
-    cards = [...info].sort((a, b) => a.price_per_hour - b.price_per_hour);
-  }
-  if (filter === "Greater than 10$") {
-    cards = [...info].sort((a, b) => b.price_per_hour - a.price_per_hour);
+  switch (filter) {
+    case "a-to-z":
+      cards = [...info].sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "z-to-a":
+      cards = [...info].sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "less-than-10$":
+      cards = [...info].sort((a, b) => a.price_per_hour - b.price_per_hour);
+      break;
+    case "greater-than-10$":
+      cards = [...info].sort((a, b) => a.price_per_hour - b.price_per_hour);
+      break;
+    case "popular":
+      cards = [...info].sort((a, b) => b.rating - a.rating);
+      break;
+    case "not-popular":
+      cards = [...info].sort((a, b) => a.rating - b.rating);
+      break;
+    default:
+      cards = info;
+      break;
   }
 
   return (
-    <>
-      <Filters filter={filter} hendleFilter={hendleFilter} />
+    <> 
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
         {cards.map((item, i) => {
           return <ItemOfPsichologists key={item.name} i={i} item={item} />;

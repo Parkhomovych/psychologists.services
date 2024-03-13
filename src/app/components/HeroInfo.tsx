@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroInfo() {
   return (
