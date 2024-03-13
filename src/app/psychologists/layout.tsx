@@ -6,8 +6,8 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="container py-8">
+    <div className="container py-8">
       {children}
-    </main>
+    </div>
   );
 }

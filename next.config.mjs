@@ -6,7 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "ftp.goit.study",
       },
-      
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
 };

@@ -13,7 +13,7 @@
 }
 
 .modal {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[30px] bg-[#fbfbfb] dark:bg-gray-900 p-12;
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[30px] bg-[#fbfbfb] dark:bg-gray-900 p-16;
 }
 
 /* Modal */
@@ -46,3 +46,15 @@ input[type="number"] {
 }
 
 /* Form */
+
+.lineGoogle {
+  width: 260px;
+height: 1px;
+  background-image: linear-gradient(
+    to right,
+    #4285f4,
+    #34a853,
+    #fbbc05,
+    #ea4335
+  );
+}
