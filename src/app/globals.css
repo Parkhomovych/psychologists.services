@@ -1,60 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(./customSyles.css);
 
-.container {
-  max-width: 1184px;
-  margin: 0 auto;
-}
-
-/* Modal */
-.backdrop {
-  @apply fixed top-0 left-0 z-10 bg-black06 dark:bg-white02 w-screen h-screen;
-}
-
-.modal {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[30px] bg-[#fbfbfb] dark:bg-gray-900 p-16;
-}
-
-/* Modal */
-
-/* Animation */
-.animateColor {
-  @apply transition-colors duration-300;
-}
-
-.animateCloseBtn {
-  @apply hover:text-activeGreen active:bg-activeGreen hover:rotate-180 hover:scale-125 transition-all duration-500;
-}
-
-/* Animation */
-
-/* Form */
-.input {
-  @apply px-[18px] py-3.5 h-[52px] text-black dark:text-gray-50 bg-white dark:bg-gray-900 placeholder:text-black dark:placeholder:text-gray-50 focus-within:border-green rounded-xl border border-black01 dark:border-gray-700 outline-none;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  /* Chrome, Safari, Edge, Opera */
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
-  /* Firefox */
-}
-
-/* Form */
-
-.lineGoogle {
-  width: 260px;
-height: 1px;
-  background-image: linear-gradient(
-    to right,
-    #4285f4,
-    #34a853,
-    #fbbc05,
-    #ea4335
-  );
+body {
+  @apply max-w-[1224px] mx-auto px-5 bg-[#f3f3f3] dark:bg-gray-900 text-black dark:text-gray-50;
 }

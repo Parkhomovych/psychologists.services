@@ -4,7 +4,7 @@ import "./globals.css";
 
 import React from "react";
 import Header from "./components/Header";
-import {Providers} from './components/Providers'
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,13 +16,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} bg-[#f3f3f3] dark:bg-gray-900 text-black dark:text-gray-50 `}
-      >
-        <Providers>
-          <Header />
-          <main> {children}</main>
-        </Providers>
+      <body className={`${inter.className}`}>
+        <Header />
+        <main> {children}</main>
       </body>
     </html>
   );
