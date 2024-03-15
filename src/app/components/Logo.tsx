@@ -1,5 +1,9 @@
 "use client";
-import { addUser } from "../../../firebase/database/operations";
+import {
+  FavitePsychologists,
+  addUser,
+  allPsychologists,
+} from "../../../firebase/database/operations";
 
 export default function Logo() {
   return (
