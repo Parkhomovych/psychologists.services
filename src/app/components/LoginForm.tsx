@@ -1,11 +1,11 @@
 "use client";
 
-import  { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { LogIn } from "../../../firebase/providers/mail-and-pass";
 
-export default function LoginForm({ h2 }: { h2: string }) {
+export default function LoginForm() {
   const [showPass, setshowPass] = useState(false);
 
   const hendlePass = () => {
@@ -31,7 +31,6 @@ export default function LoginForm({ h2 }: { h2: string }) {
             className="input w-[438px] mb-10"
             required
           />
-
           <button
             type="button"
             className=" w-5 h-5 absolute top-4 right-[18px] text-black dark:text-gray-50 hover:text-activeGreen active:text-activeGreen animateColor"
@@ -45,7 +44,7 @@ export default function LoginForm({ h2 }: { h2: string }) {
           </button>
         </div>
         <button className=" w-[438px] h-[52px] flex items-center justify-center bg-green  rounded-[30px] hover:bg-activeGreen animateColor">
-          <span className=" font-medium text-base text-white">{h2}</span>
+          <span className=" font-medium text-base text-white">Log In</span>
         </button>
       </form>
     </>

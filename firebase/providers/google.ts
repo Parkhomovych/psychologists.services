@@ -1,6 +1,7 @@
 import { auth } from "../config";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, linkWithPopup } from "firebase/auth";
 import type { UserCredential, User } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const provider = new GoogleAuthProvider();
 
@@ -8,7 +9,9 @@ export const googleAuth = () => {
   signInWithPopup(auth, provider)
     .then((result: UserCredential) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
+      const user = result.user;
       const token = credential?.accessToken;
+      toast.success(`Welcome ${user.displayName}`)
     })
     .catch((error) => {
       // Handle Errors here.
@@ -21,3 +24,4 @@ export const googleAuth = () => {
       // ...
     });
 };
+

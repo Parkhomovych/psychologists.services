@@ -1,18 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import RegistrationModal from "./AuthModal";
+import RegModal from "./RegModal";
 import PresenceModal from "./PresenceModal";
+import LogModal from "./LogModal";
+import { auth } from "../../../firebase/config";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function AuthBtn() {
   const [isOpenLog, setIsOpenLog] = useState(false);
   const [isOpenReg, setIsOpenReg] = useState(false);
+  const [currentUser, setcurrentUser] = useState(null);
+
   const handlerOpenLog = () => {
     setIsOpenLog((pS) => !pS);
   };
   const handlerOpenReg = () => {
     setIsOpenReg((pS) => !pS);
   };
+  onAuthStateChanged(auth, (user: any) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      setcurrentUser(user);
+      console.log(currentUser);
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
   return (
     <>
       <div>
@@ -29,19 +46,10 @@ export default function AuthBtn() {
           <span className="text-base font-medium leading-5">Registration</span>
         </button>
         <PresenceModal isOpen={isOpenLog}>
-          <RegistrationModal
-            closeModal={handlerOpenLog}
-            h2="Log In"
-            p=" Welcome back! Please enter your credentials to access your account
-       and continue your search for a psychologist."
-          />
+          <LogModal closeModal={handlerOpenLog} />
         </PresenceModal>
         <PresenceModal isOpen={isOpenReg}>
-          <RegistrationModal
-            closeModal={handlerOpenReg}
-            h2="Registration"
-            p="Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information."
-          />
+          <RegModal closeModal={handlerOpenReg} />
         </PresenceModal>
       </div>
     </>

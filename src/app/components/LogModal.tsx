@@ -6,18 +6,16 @@ import Modal from "./Modal";
 import { FcGoogle } from "react-icons/fc";
 
 interface ModalProps {
-  h2: string;
-  p: string;
   closeModal: () => void;
 }
 
-export default function RegistrationForm({ h2, p, closeModal }: ModalProps) {
+export default function LogModal({ closeModal }: ModalProps) {
   return (
     <Modal closeModal={closeModal} style="w-[566px]  flex flex-col gap-y-10">
       <div>
         <div className="mb-5 flex items-center justify-between gap-x-3">
           <h2 className="font-medium text-4xl text-black dark:text-gray-50">
-            {h2}
+            Log In
           </h2>
           <div className="lineGoogle"></div>
           <button
@@ -28,10 +26,11 @@ export default function RegistrationForm({ h2, p, closeModal }: ModalProps) {
             <FcGoogle className="w-8 h-8" />
           </button>
         </div>
-        <p className=" font-normal text-base text-white06  dark:text-gray-500">
-          {p}
+        <p className="mb-10 font-normal text-base text-white06  dark:text-gray-500">
+          Welcome back! Please enter your credentials to access your account and
+          continue your search for a psychologist.
         </p>
-        <LoginForm h2={h2} />
+        <LoginForm />
       </div>
     </Modal>
   );
