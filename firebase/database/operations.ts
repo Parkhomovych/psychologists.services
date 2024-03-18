@@ -16,7 +16,6 @@ export const addUser = async () => {
     }
 }
 
-
 export const allPsychologists = async () => {
     try {
         const querySnapshot = await getDocs(collection(db, "psychologists"));
@@ -29,7 +28,7 @@ export const allPsychologists = async () => {
     }
 }
 
-export const FavitePsychologists = async () => {
+export const FavoritePsychologists = async () => {
     try {
         const psychologysts = collection(db, 'psychologists')
         const q = query(psychologysts, where('rating', '>', 4.7))

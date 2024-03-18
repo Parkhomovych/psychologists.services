@@ -1,21 +1,18 @@
-"use client";
-
-import { googleAuth } from "../../../firebase/providers/google";
-import LoginForm from "./LoginForm";
-import Modal from "./Modal";
+import Modal from "../Modal";
 import { FcGoogle } from "react-icons/fc";
+import RegForm from "./RegForm";
+import { googleAuth } from "../../../../firebase/config";
 
 interface ModalProps {
   closeModal: () => void;
 }
-
-export default function LogModal({ closeModal }: ModalProps) {
+export default function RegModal({ closeModal }: ModalProps) {
   return (
     <Modal closeModal={closeModal} style="w-[566px]  flex flex-col gap-y-10">
       <div>
         <div className="mb-5 flex items-center justify-between gap-x-3">
           <h2 className="font-medium text-4xl text-black dark:text-gray-50">
-            Log In
+            Registration
           </h2>
           <div className="lineGoogle"></div>
           <button
@@ -27,10 +24,11 @@ export default function LogModal({ closeModal }: ModalProps) {
           </button>
         </div>
         <p className="mb-10 font-normal text-base text-white06  dark:text-gray-500">
-          Welcome back! Please enter your credentials to access your account and
-          continue your search for a psychologist.
+          Thank you for your interest in our platform! In order to register, we
+          need some information. Please provide us with the following
+          information.
         </p>
-        <LoginForm />
+        <RegForm />
       </div>
     </Modal>
   );

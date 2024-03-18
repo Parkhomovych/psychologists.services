@@ -1,6 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, UserInfo } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import type { UserCredential } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -12,7 +15,31 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
+
 export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
 export const db = getFirestore(app)
+export const auth = getAuth(app);
+
+
+const provider = new GoogleAuthProvider();
+export const googleAuth = () => {
+    signInWithPopup(auth, provider)
+        .then((result: UserCredential) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const user = result.user;
+            const token = credential?.accessToken;
+            
+            toast.success(`Welcome ${user.displayName}`)
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+};
 

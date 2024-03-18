@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function FiltersList() {
   return (
-    <ul>
+    <ul className=" w-[220px] absolute top-2 z-50 py-4 px-[18px] bg-[#fff] dark:bg-gray-700 rounded-[14px]">
       <li>
         <Link
           href="/psychologists/a-to-z"

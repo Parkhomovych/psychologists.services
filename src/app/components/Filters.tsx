@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import FiltersList from "./FiltersList";
 import IoIosArrow from "./IoIosArrow";
+import PresencePosition from "./Animate/PresencePosition";
 
 type TagName = "INPUT" | "A" | "LI" | "svg" | "path";
 
@@ -60,18 +60,9 @@ export default function Filters({ filter }: { filter: string }) {
           isOpen={isOpen}
           style="absolute top-3.5 left-[186px] w-[20px] h-[20px] text-white"
         />
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, position: "absolute", zIndex: 99 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className=" w-[220px] absolute top-14 z-50 py-4 px-[18px] bg-[#fff] dark:bg-gray-700 rounded-[14px]"
-            >
-              <FiltersList />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <PresencePosition isOpen={isOpen} pos="absolute">
+          <FiltersList />
+        </PresencePosition>
       </div>
     </div>
   );

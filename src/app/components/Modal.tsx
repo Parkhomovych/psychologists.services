@@ -1,7 +1,5 @@
-"use client";
 import IconCloseModal from "./IconCloseModal";
 import { ReactNode, useEffect } from "react";
-
 
 type Props = {
   children: ReactNode;

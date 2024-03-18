@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import { LuClock4 } from "react-icons/lu";
 import Image from "next/image";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import PresencePosition from "./Animate/PresencePosition";
 
 type Props = {
   name: string;
@@ -40,7 +40,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
         if (`${formattedHour}:${formattedMinute}` === time) {
           times.push(
             <li key={`${formattedHour}:${formattedMinute}`}>
-              <p className="font-normal text-base dark:text-gray-50 text-black ">
+              <p className=" p-[2px] font-normal text-base dark:text-gray-50 text-black cursor-pointer">
                 {formattedHour} : {formattedMinute}
               </p>
             </li>
@@ -49,7 +49,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
         }
         times.push(
           <li key={`${formattedHour}:${formattedMinute}`}>
-            <p className="font-normal text-base text-white02 hover:text-black dark:text-gray-400 dark:hover:text-gray-50 animateColor">
+            <p className=" p-[2px] font-normal text-base text-white02 hover:text-black dark:text-gray-400 dark:hover:text-gray-50 animateColor cursor-pointer">
               {formattedHour} : {formattedMinute}
             </p>
           </li>
@@ -105,7 +105,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
               required
               pattern="[0-9]"
             />
-            <div onClick={changeIsOpen} className=" relative cursor-pointer">
+            <div onClick={changeIsOpen} className=" relative ">
               <input
                 className="input grow cursor-pointer outline-0"
                 type="text"
@@ -115,8 +115,19 @@ export default function MakeModal({ name, image, closeModal }: Props) {
                 readOnly
                 required
               />
-              <LuClock4 className=" absolute top-[18px] right-[18px]" />
-              <AnimatePresence>
+              <LuClock4 className=" absolute top-[18px] right-[18px] cursor-pointer" />
+              <PresencePosition isOpen={isOpen} pos="absolute">
+                <div className=" absolute top-2 left-[68px] w-[151px] h-[179px] p-4 bg-[#fff] dark:bg-gray-800 rounded-xl">
+                  <p className="mb-4 text-center">Meeting time</p>
+                  <ul
+                    onClick={changeTime}
+                    className=" w-[119px] h-[110px] flex flex-col items-center overflow-y-auto"
+                  >
+                    {murkupTime()}
+                  </ul>
+                </div>
+              </PresencePosition>
+              {/* <AnimatePresence>
                 {isOpen && (
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -124,16 +135,10 @@ export default function MakeModal({ name, image, closeModal }: Props) {
                     exit={{ opacity: 0 }}
                     className="absolute top-[61.23px] right-[-1px] w-[151px] h-[179px] p-4 bg-[#fff] dark:bg-gray-800 rounded-xl"
                   >
-                    <p className="mb-4 text-center">Meeting time</p>
-                    <ul
-                      onClick={changeTime}
-                      className=" w-[119px] h-[110px] flex flex-col items-center gap-y-1 overflow-y-auto"
-                    >
-                      {murkupTime()}
-                    </ul>
+                  
                   </motion.div>
                 )}
-              </AnimatePresence>
+              </AnimatePresence> */}
             </div>
           </div>
           <input

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Review } from "./ListOfPsichologists";
 import { IoIosStar } from "react-icons/io";
 import MakeModal from "./MakeModal";
-import PresenceModal from "./PresenceModal";
+import PresencePosition from "./Animate/PresencePosition";
 
 export type ReviewersProps = {
   reviews: Review[];
@@ -13,7 +13,7 @@ export type ReviewersProps = {
 export default function Reviewers({ reviews, name, image }: ReviewersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const handleModal = () => {
-    setIsOpen((pS:boolean) => !pS);
+    setIsOpen((pS: boolean) => !pS);
   };
   return (
     <>
@@ -30,11 +30,15 @@ export default function Reviewers({ reviews, name, image }: ReviewersProps) {
                 </h4>
                 <p className="flex gap-y-2 items-center">
                   <IoIosStar className=" w-4 h-4 text-yellow mr-2" />
-                  <span className=" font-medium text-black dark:text-gray-50">{item.rating}</span>
+                  <span className=" font-medium text-black dark:text-gray-50">
+                    {item.rating}
+                  </span>
                 </p>
               </div>
             </div>
-            <p className=" text-base text-white06 dark:text-gray-">{item.comment}</p>
+            <p className=" text-base text-white06 dark:text-gray-">
+              {item.comment}
+            </p>
           </li>
         ))}
       </ul>
@@ -44,9 +48,9 @@ export default function Reviewers({ reviews, name, image }: ReviewersProps) {
       >
         Make an appointment
       </button>
-      <PresenceModal isOpen={isOpen}>
+      <PresencePosition pos="fixed" isOpen={isOpen}>
         <MakeModal closeModal={handleModal} name={name} image={image} />
-      </PresenceModal>
+      </PresencePosition>
     </>
   );
 }

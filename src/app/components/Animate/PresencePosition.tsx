@@ -4,16 +4,17 @@ import { motion, AnimatePresence } from "framer-motion";
 export interface Presence {
   children: React.ReactNode;
   isOpen: boolean;
+  pos: "fixed" | "absolute";
 }
 
-export default function PresenceModal({ children, isOpen }: Presence) {
+export default function PresencePosition({ children, isOpen, pos }: Presence) {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ height: 0, opacity: 0, position: "fixed" , zIndex: 999}}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
+          initial={{ opacity: 0, position: pos, zIndex: 999 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
           {children}
         </motion.div>
