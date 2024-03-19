@@ -1,8 +1,5 @@
-
-import { googleAuth } from "../../../../firebase/config";
 import LoginForm from "./LoginForm";
 import Modal from "../Modal";
-import { FcGoogle } from "react-icons/fc";
 
 interface ModalProps {
   closeModal: () => void;
@@ -16,14 +13,6 @@ export default function LogModal({ closeModal }: ModalProps) {
           <h2 className="font-medium text-4xl text-black dark:text-gray-50">
             Log In
           </h2>
-          <div className="lineGoogle"></div>
-          <button
-            onClick={googleAuth}
-            type="button"
-            className=" hover:scale-[1.25] transition-all "
-          >
-            <FcGoogle className="w-8 h-8" />
-          </button>
         </div>
         <p className="mb-10 font-normal text-base text-white06  dark:text-gray-500">
           Welcome back! Please enter your credentials to access your account and

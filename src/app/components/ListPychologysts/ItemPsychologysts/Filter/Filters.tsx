@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import FiltersList from "./FiltersList";
-import IoIosArrow from "./IoIosArrow";
-import PresencePosition from "./Animate/PresencePosition";
+import IoIosArrow from "../../../IoIosArrow";
+import PresencePosition from "../../../Animate/PresencePosition";
 
 type TagName = "INPUT" | "A" | "LI" | "svg" | "path";
 

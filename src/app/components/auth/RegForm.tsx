@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import { auth } from "../../../../firebase/config";
+import { useRouter } from "next/navigation";
 
 export default function RegForm() {
   const [showPass, setshowPass] = useState(false);
@@ -12,6 +13,8 @@ export default function RegForm() {
   const [userEmail, setUserEmail] = useState("");
   const [userToken, setUserToken] = useState("");
   const [userRefreshToken, setUserRefreshToken] = useState("");
+  const route = useRouter();
+
   useEffect(() => {
     if (userName) {
       localStorage.setItem("userName", JSON.stringify(userName));
@@ -31,7 +34,6 @@ export default function RegForm() {
   }, [userEmail, userName, userRefreshToken, userToken]);
 
   const registration = (e: any) => {
-    e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -41,7 +43,8 @@ export default function RegForm() {
         const user = userCredential.user;
         setUserEmail(user.email as string);
         setUserRefreshToken(user.refreshToken as string);
-
+        route.push("/favorites");
+        toast.success("Success");
         const token = user.getIdToken().then((token) => {
           setUserToken(token as string);
         });

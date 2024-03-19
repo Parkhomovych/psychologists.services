@@ -29,14 +29,22 @@ input[type="number"] {
 }
 /* Form */
 
-.lineGoogle {
-  width: 260px;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    #4285f4,
-    #34a853,
-    #fbbc05,
-    #ea4335
-  );
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

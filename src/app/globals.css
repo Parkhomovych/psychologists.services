@@ -6,3 +6,4 @@
 body {
   @apply max-w-[1224px] mx-auto px-5 bg-[#f3f3f3] dark:bg-gray-900 text-black dark:text-gray-50;
 }
+

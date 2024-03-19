@@ -1,5 +1,5 @@
 import { IoIosStar } from "react-icons/io";
-import { Therapist } from "./ListOfPsichologists";
+import { Therapist } from "../ListOfPsichologists";
 import Image from "next/image";
 import BtnFavorite from "./BtnFavorite";
 import BtnReadMore from "./BtnReadMore";

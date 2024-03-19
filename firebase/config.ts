@@ -1,9 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, UserInfo } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import type { UserCredential } from "firebase/auth";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -19,7 +20,6 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
 export const auth = getAuth(app);
-
 
 const provider = new GoogleAuthProvider();
 export const googleAuth = () => {

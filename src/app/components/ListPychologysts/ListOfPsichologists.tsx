@@ -1,5 +1,5 @@
 import info from "@/app/psychologists.json";
-import ItemOfPsichologists from "./ItemOfPsichologists";
+import ItemOfPsichologists from "./ItemPsychologysts/ItemOfPsichologists";
 
 export interface Review {
   reviewer: string;
@@ -48,7 +48,7 @@ export default function ListOfPsichologists({ filter }: {filter: string}) {
   }
 
   return (
-    <> 
+    <>
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
         {cards.map((item, i) => {
           return <ItemOfPsichologists key={item.name} i={i} item={item} />;

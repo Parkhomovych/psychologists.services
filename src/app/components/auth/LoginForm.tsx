@@ -3,8 +3,8 @@
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
-import { auth } from "../../../../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../../firebase/config";
 
 export default function LoginForm() {
   const [showPass, setshowPass] = useState(false);
