@@ -1,10 +1,6 @@
 "use client";
-
-import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { LuEye, LuEyeOff } from "react-icons/lu";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../../firebase/config";
 
 export default function LoginForm() {
   const [showPass, setshowPass] = useState(false);
@@ -12,23 +8,9 @@ export default function LoginForm() {
     setshowPass((pS) => !pS);
   };
 
-  const LogIn = (e: any) => {
-    e.preventDefault();
-    const email = (e.target as HTMLFormElement).email.value;
-    const password = (e.target as HTMLFormElement).password.value;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        toast.error("Email or password is not valid");
-      });
-  };
   return (
     <>
-      <Toaster />
-      <form onSubmit={LogIn} className="flex flex-wrap ">
+      <form className="flex flex-wrap ">
         <input
           type="email"
           name="email"
