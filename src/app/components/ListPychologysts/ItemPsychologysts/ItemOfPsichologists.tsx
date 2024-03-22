@@ -6,9 +6,8 @@ import BtnReadMore from "./BtnReadMore";
 
 type Props = {
   item: Therapist;
-  i: number;
 };
-export default function ItemOfPsichologists({ item, i }: Props) {
+export default function ItemOfPsichologists({ item }: Props) {
   return (
     <li className="flex gap-x-6 p-6 w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
       <div>

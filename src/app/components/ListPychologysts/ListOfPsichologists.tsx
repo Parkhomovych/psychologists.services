@@ -1,12 +1,11 @@
-import info from "@/app/psychologists.json";
-import ItemOfPsichologists from "./ItemPsychologysts/ItemOfPsichologists";
 
+import ItemOfPsichologists from "./ItemPsychologysts/ItemOfPsichologists";
+import { getPshichologists } from "@/firebase/database/getAll";
 export interface Review {
   reviewer: string;
   rating: number;
   comment: string;
 }
-
 export interface Therapist {
   name: string;
   avatar_url: string;
@@ -20,38 +19,13 @@ export interface Therapist {
   about: string;
 }
 
-export default function ListOfPsichologists({ filter }: {filter: string}) {
-  let cards;
-
-  switch (filter) {
-    case "a-to-z":
-      cards = [...info].sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "z-to-a":
-      cards = [...info].sort((a, b) => b.name.localeCompare(a.name));
-      break;
-    case "less-than-10$":
-      cards = [...info].sort((a, b) => a.price_per_hour - b.price_per_hour);
-      break;
-    case "greater-than-10$":
-      cards = [...info].sort((a, b) => a.price_per_hour - b.price_per_hour);
-      break;
-    case "popular":
-      cards = [...info].sort((a, b) => b.rating - a.rating);
-      break;
-    case "not-popular":
-      cards = [...info].sort((a, b) => a.rating - b.rating);
-      break;
-    default:
-      cards = info;
-      break;
-  }
-
+export default async function ListOfPsichologists() {
+  const data = await getPshichologists();
   return (
     <>
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
-        {cards.map((item, i) => {
-          return <ItemOfPsichologists key={item.name} i={i} item={item} />;
+        {data.map((item: Therapist) => {
+          return <ItemOfPsichologists key={item.name} item={item} />;
         })}
       </ul>
       <button

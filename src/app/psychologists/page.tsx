@@ -3,9 +3,9 @@ import ListOfPsichologists from "../components/ListPychologysts/ListOfPsichologi
 
 export default function Psyhologists() {
   return (
-    <div className=" py-6">
-      <Filters filter="Shaw all" />
-      <ListOfPsichologists filter="all" />
-    </div>
+    <>
+      <Filters />
+      <ListOfPsichologists />
+    </>
   );
 }
