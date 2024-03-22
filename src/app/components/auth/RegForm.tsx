@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Eye from "./Eye";
-import { registration } from "@/firebase/actions";
+import { registration } from "@/firebase/auth/email-pass";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -22,6 +22,9 @@ export default function RegForm() {
     }
     if (data === "auth/weak-password") {
       toast.error("Weak password");
+    }
+    if (data === "auth/invalid-email") {
+      toast.error("Email is not valid");
     }
   }
 

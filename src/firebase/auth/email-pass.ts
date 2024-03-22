@@ -30,6 +30,9 @@ export async function registration(formData: FormData,) {
       if (error?.code === 'auth/weak-password') {
         return 'auth/weak-password'
       }
+      if (error?.code === 'auth/invalid-email') {
+        return 'auth/invalid-email'
+      }
       console.log(error?.code);
       console.log(error?.message);
     }

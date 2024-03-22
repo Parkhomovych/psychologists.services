@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Eye from "./Eye";
-import { login } from "@/firebase/actions";
+import { login } from "@/firebase/auth/email-pass";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -15,8 +15,6 @@ export default function LoginForm() {
   const router = useRouter();
   async function handleLog(e: FormData) {
     const data = await login(e);
-    console.log(data);
-
     if (data === "success") router.push("/psychologists");
     if (data === "auth/invalid-credential") {
       toast.error("Email or password is not valid");

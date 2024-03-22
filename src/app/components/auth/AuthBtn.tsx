@@ -16,8 +16,9 @@ export default function AuthBtn() {
             height={`40`}
             alt=""
             src={avatar || "/svg/user.svg"}
+            className=" rounded-[10px]"
           />
-          <p>{name}</p>
+          <p>{String(name)}</p>
           <LogOut />
         </div>
       ) : (

@@ -12,7 +12,7 @@ export default async function page() {
         continue your search for a psychologist.
       </p>
       <LoginForm />
-      <BtnGoogle />
+
     </div>
   );
 }

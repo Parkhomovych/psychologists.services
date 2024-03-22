@@ -1,5 +1,5 @@
 "use client";
-import { logout } from "@/firebase/actions";
+import { logout } from "@/firebase/auth/email-pass";
 import { useRouter } from "next/navigation";
 
 export default function LogOut() {

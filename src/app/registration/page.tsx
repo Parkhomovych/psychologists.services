@@ -12,7 +12,6 @@ export default function Registration() {
         need some information. Please provide us with the following information.
       </p>
       <RegForm />
-      <BtnGoogle />
     </div>
   );
 }
