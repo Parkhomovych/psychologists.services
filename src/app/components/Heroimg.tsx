@@ -9,7 +9,7 @@ export default function HeroImg() {
     <div className="relative">
       <Image
         className="rounded-xl"
-        src='/hero.jpeg'
+        src='/image/hero.jpeg'
         alt="Psyhologist"
         width={`464`}
         height={`526`}

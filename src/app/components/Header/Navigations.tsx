@@ -1,8 +1,10 @@
 import React from "react";
 import NavLink from "./NavLink";
+import { cookies } from "next/headers";
 
 export default function Navigations() {
-  
+  const token = cookies().get("token")?.value;
+
   return (
     <nav>
       <ul className="flex gap-x-10">
@@ -12,6 +14,7 @@ export default function Navigations() {
         <li>
           <NavLink href="/psychologists">Psychologists</NavLink>
         </li>
+        {token && <NavLink href="/favorites">Favorites</NavLink>}
       </ul>
     </nav>
   );
