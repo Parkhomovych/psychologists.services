@@ -16,16 +16,24 @@ export default function Filters() {
     }
   };
   const pathname = usePathname();
-  let filt;
-
-  switch (pathname) {
-    case "/psychologists":
-      filt = "Show all";
-      break;
-
-    default:
-      break;
-  }
+  const valueFilt = () => {
+    switch (pathname) {
+      case "/psychologists/a-to-z":
+        return "A to Z";
+      case "/psychologists/z-to-a":
+        return "Z to A";
+      case "/psychologists/less-than-10$":
+        return "Less than 10$";
+      case "/psychologists/greater-than-10$":
+        return "Greater than 10$";
+      case "/psychologists/popular":
+        return "Popular";
+      case "/psychologists/not-popular":
+        return "Not popular";
+      default:
+        return "Show all";
+    }
+  };
   return (
     <div className="mb-8">
       <p className="mb-2 font-medium text-black06 dark:text-gray-500">
@@ -39,14 +47,14 @@ export default function Filters() {
           className="px-[18px] py-[12px] text-white bg-green hover:bg-activeGreen animateColor rounded-[14px] cursor-pointer outline-none"
           type="text"
           readOnly
-          value={filt}
+          value={valueFilt()}
         />
         <IoIosArrow
           isOpen={isOpen}
           style="absolute top-3.5 left-[186px] w-[20px] h-[20px] text-white"
         />
         <PresencePosition isOpen={isOpen} pos="absolute">
-          <FiltersList />
+          <FiltersList filter={valueFilt()} />
         </PresencePosition>
       </div>
     </div>

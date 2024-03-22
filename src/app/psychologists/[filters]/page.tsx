@@ -1,12 +1,12 @@
-import Filters from "@/app/components/ListPychologysts/ItemPsychologysts/Filter/Filters";
 import ListOfPsichologists from "@/app/components/ListPychologysts/ListOfPsichologists";
+import { getPshichologists } from "@/firebase/database/getAll";
 
-export default function Page({ params }: { params: { filters: string } }) {
-  
+export default async function Page() {
+  const data = await getPshichologists();
+
   return (
     <>
-      <Filters />
-      <ListOfPsichologists />
+      <ListOfPsichologists data={data} />
     </>
   );
 }
