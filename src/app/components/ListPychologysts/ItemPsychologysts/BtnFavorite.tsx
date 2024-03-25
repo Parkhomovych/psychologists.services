@@ -1,38 +1,43 @@
 "use client";
-import { useState } from "react";
 
+import { auth } from "@/firebase/config";
+import { updateProfile } from "firebase/auth";
+import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
-import clsx from "clsx";
 
 export default function BtnFavorite({ item }: any) {
-  const [isFavorite, setisFavorite] = useState(false);
-
-  const handleFavorite = () => {
-    if (!isFavorite) {
-      setisFavorite((pS) => !pS);
-      // localStorage.setItem("favorite", JSON.stringify(item));
-    }
-    if (isFavorite) {
-      setisFavorite((pS) => !pS);
-      // localStorage.setItem("favorite", item);
-    }
+  const [isFavorite, setIsFavorite] = useState(false);
+  const AddFavorite = () => {
+    setIsFavorite((pS) => !pS);
+    // const data = () => {
+    //   updateProfile(auth.currentUser, { displayName: "test" });
+    // };
+    // data();
+  };
+  const DeleteFavorite = () => {
+    setIsFavorite((pS) => !pS);
   };
 
   return (
-    <button
-      onClick={handleFavorite}
-      type="button"
-      className={clsx(
-        `hover:text-activeGreen hover:scale-125 transition-all duration-300 `,
-        isFavorite ? `text-green` : `text-black dark:text-gray-200`
-      )}
-    >
+    <div>
       {isFavorite ? (
-        <FaHeart className="w-[26px] h-[26px]" />
+        <button
+          onClick={DeleteFavorite}
+          type="button"
+          className={` text-green hover:text-activeGreen hover:scale-125 transition-all duration-300`}
+        >
+          <FaHeart className="w-[26px] h-[26px]" />
+        </button>
       ) : (
-        <FaRegHeart className="w-[26px] h-[26px]" />
+        <button
+          onClick={AddFavorite}
+          type="button"
+          className={`text-green  hover:text-activeGreen hover:scale-125 transition-all duration-300`}
+        >
+          <FaRegHeart className="w-[26px] h-[26px]" />
+        </button>
       )}
-    </button>
+    </div>
   );
 }

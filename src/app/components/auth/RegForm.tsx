@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Eye from "./Eye";
 import { registration } from "@/firebase/auth/email-pass";

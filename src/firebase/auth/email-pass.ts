@@ -1,10 +1,8 @@
 'use server'
 
 import { auth } from "@/firebase/config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { NextResponse } from "next/server";
 
 export async function registration(formData: FormData,) {
   const name = formData.get('name') as string
@@ -18,9 +16,11 @@ export async function registration(formData: FormData,) {
       const token = await user.getIdToken()
       if (user) {
         await updateProfile(user, { displayName: name })
+
         cookies().set('name', name || "", { httpOnly: true })
         cookies().set('token', token || "", { httpOnly: true })
         cookies().set('avatar', user?.photoURL || "", { httpOnly: true })
+
         return 'success'
       }
     } catch (error: any) {
@@ -49,9 +49,15 @@ export async function login(formData: FormData) {
       const data = await signInWithEmailAndPassword(auth, email, password)
       const user = data.user
       const token = await user.getIdToken()
+      onAuthStateChanged(auth, user => {
+        console.log(user);
+
+      })
+
       cookies().set('token', token || "", { httpOnly: true })
       cookies().set('name', user?.displayName || "", { httpOnly: true })
       cookies().set('avatar', user?.photoURL || "", { httpOnly: true })
+
       return 'success'
     } catch (error: any) {
       console.log(error?.code);
@@ -65,6 +71,10 @@ export async function login(formData: FormData) {
 }
 
 export async function logout() {
+   onAuthStateChanged(auth, user => {
+        console.log(user);
+
+      })
   try {
     signOut(auth)
     cookies().delete('token')

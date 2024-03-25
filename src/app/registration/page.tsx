@@ -1,4 +1,4 @@
-import BtnGoogle from "@/app/components/auth/BtnGoogle";
+
 import RegForm from "@/app/components/auth/RegForm";
 
 export default function Registration() {
