@@ -1,8 +1,8 @@
 import { auth } from "@/firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: Response) {
+export async function GET() {
 
 
 
