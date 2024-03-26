@@ -7,11 +7,11 @@ export async function middleware(request: NextRequest) {
         return Response.redirect(new URL('/', request.url))
     }
     if (token && request.nextUrl.pathname === '/login') {
-        console.log('login');
+
         return Response.redirect(new URL('/psychologists', request.url))
     }
     if (token && request.nextUrl.pathname === '/registration') {
-        console.log('registration');
+
         return Response.redirect(new URL('/psychologists', request.url))
     }
 }

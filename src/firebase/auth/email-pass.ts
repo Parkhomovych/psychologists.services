@@ -34,8 +34,7 @@ export async function registration(formData: FormData,) {
       if (error?.code === 'auth/invalid-email') {
         return 'auth/invalid-email'
       }
-      console.log(error?.code);
-      console.log(error?.message);
+      console.error(error);
     }
   }
 
@@ -50,7 +49,7 @@ export async function login(formData: FormData) {
       const data = await signInWithEmailAndPassword(auth, email, password)
       const user = data.user
       const token = await user.getIdToken()
-      
+
 
       cookies().set('token', token || "", { httpOnly: true })
       cookies().set('name', user?.displayName || "", { httpOnly: true })
@@ -58,27 +57,22 @@ export async function login(formData: FormData) {
 
       return 'success'
     } catch (error: any) {
-      console.log(error?.code);
-      console.log(error?.message);
-
       if (error?.code === 'auth/invalid-credential') {
         return 'auth/invalid-credential'
       }
+      console.error(error);
     }
   }
 }
 
 export async function logout() {
-  onAuthStateChanged(auth, user => {
-    console.log(user);
-
-  })
   try {
     signOut(auth)
     cookies().delete('token')
     cookies().delete('name')
     cookies().delete('avatar')
   } catch (error) {
-    console.log(error);
+    console.error(error);
+
   }
 }

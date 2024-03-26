@@ -13,10 +13,10 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-
 export const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 export const db = getFirestore(app) // Initialize Cloud Firestore and get a reference to the service
 export const auth = getAuth(app); // Initialize Firebase Authentication and get a reference to the service
+
 
 
 

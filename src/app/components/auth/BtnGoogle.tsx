@@ -16,7 +16,6 @@ export default function BtnGoogle() {
       const name = data.user.displayName;
 
       if (token && name) {
-        console.log(name);
 
         document.cookie = `token=${token}; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/`;
         document.cookie = `avatar=${avatar}; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/`;
@@ -25,8 +24,8 @@ export default function BtnGoogle() {
 
       router.push("/psychologists");
     } catch (error: any) {
-      console.log(error?.code);
-      console.log(error?.message);
+      console.error(error?.code);
+      console.error(error?.message);
       router.push("/");
     }
   }
