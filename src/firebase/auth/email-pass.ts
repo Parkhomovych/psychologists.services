@@ -13,6 +13,7 @@ export async function registration(formData: FormData,) {
     try {
       const data = await createUserWithEmailAndPassword(auth, email, password)
       const user = data.user
+
       const token = await user.getIdToken()
       if (user) {
         await updateProfile(user, { displayName: name })
@@ -49,10 +50,7 @@ export async function login(formData: FormData) {
       const data = await signInWithEmailAndPassword(auth, email, password)
       const user = data.user
       const token = await user.getIdToken()
-      onAuthStateChanged(auth, user => {
-        console.log(user);
-
-      })
+      
 
       cookies().set('token', token || "", { httpOnly: true })
       cookies().set('name', user?.displayName || "", { httpOnly: true })
@@ -71,10 +69,10 @@ export async function login(formData: FormData) {
 }
 
 export async function logout() {
-   onAuthStateChanged(auth, user => {
-        console.log(user);
+  onAuthStateChanged(auth, user => {
+    console.log(user);
 
-      })
+  })
   try {
     signOut(auth)
     cookies().delete('token')

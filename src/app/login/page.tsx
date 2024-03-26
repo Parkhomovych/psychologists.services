@@ -1,4 +1,3 @@
-import BtnGoogle from "@/app/components/auth/BtnGoogle";
 import LoginForm from "@/app/components/auth/LoginForm";
 
 export default async function page() {
@@ -12,7 +11,6 @@ export default async function page() {
         continue your search for a psychologist.
       </p>
       <LoginForm />
-
     </div>
   );
 }
