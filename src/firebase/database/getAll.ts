@@ -8,8 +8,9 @@ export async function getPshichologists() {
     const querySnapshot = await getDocs(collection(db, "psychologists"));
     querySnapshot.forEach((doc) => {
         const data = doc.data();
+        data.id = doc.id
+
         docInfo.push(data);
-        docId.push(doc.id);
     });
     return docInfo;
 }

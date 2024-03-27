@@ -10,6 +10,7 @@ export interface Review {
 }
 export interface Therapist {
   name: string;
+  id: string;
   avatar_url: string;
   experience: string;
   reviews: Review[];
@@ -49,7 +50,7 @@ export default function ListOfPsichologists({ data }: any) {
       <Filters />
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
         {cards.map((item: Therapist) => {
-          return <ItemOfPsichologists key={item.name} item={item} />;
+          return <ItemOfPsichologists key={item.id} item={item} />;
         })}
       </ul>
       <button
