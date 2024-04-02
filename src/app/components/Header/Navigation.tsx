@@ -2,7 +2,7 @@ import React from "react";
 import NavLink from "./NavLink";
 import { cookies } from "next/headers";
 
-export default function Navigations() {
+export default function Navigation() {
   const token = cookies().get("token")?.value;
 
   return (

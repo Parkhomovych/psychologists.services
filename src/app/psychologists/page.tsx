@@ -1,12 +1,12 @@
-import { getPshichologists } from "@/firebase/database/getAll";
-import ListOfPsichologists from "../components/ListPychologysts/ListOfPsichologists";
+import { getPsychologists } from "@/firebase/database/getPsychologists";
+import ListOfPsychologists from "../components/ListPsychologists/ListOfPsychologists";
 
-export default async function Psyhologists() {
-  const data = await getPshichologists();
+export default async function Psychologists() {
+  const data = await getPsychologists();
 
   return (
     <>
-      <ListOfPsichologists data={data} />
+      <ListOfPsychologists data={data} />
     </>
   );
 }

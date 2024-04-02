@@ -10,7 +10,7 @@ export default function HeroImg() {
       <Image
         className="rounded-xl"
         src='/image/hero.jpeg'
-        alt="Psyhologist"
+        alt="Psychologist"
         width={`464`}
         height={`526`}
         priority={true}

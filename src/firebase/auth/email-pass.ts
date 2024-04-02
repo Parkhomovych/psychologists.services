@@ -1,7 +1,7 @@
 'use server'
 
-import { auth } from "@/firebase/config";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { app } from "@/firebase/config";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { cookies } from "next/headers";
 
 export async function registration(formData: FormData,) {
@@ -11,6 +11,8 @@ export async function registration(formData: FormData,) {
 
   if (name && email && password) {
     try {
+      const auth = getAuth(app);
+
       const data = await createUserWithEmailAndPassword(auth, email, password)
       const user = data.user
 
@@ -46,6 +48,7 @@ export async function login(formData: FormData) {
 
   if (email && password) {
     try {
+      const auth = getAuth(app);
       const data = await signInWithEmailAndPassword(auth, email, password)
       const user = data.user
       const token = await user.getIdToken()
@@ -67,6 +70,7 @@ export async function login(formData: FormData) {
 
 export async function logout() {
   try {
+    const auth = getAuth(app);
     signOut(auth)
     cookies().delete('token')
     cookies().delete('name')

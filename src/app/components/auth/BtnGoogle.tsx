@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "@/firebase/config";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { app } from "@/firebase/config";
 
 export default function BtnGoogle() {
   const router = useRouter();
@@ -10,13 +10,13 @@ export default function BtnGoogle() {
 
   async function google() {
     try {
+      const auth = getAuth(app);
       const data = await signInWithPopup(auth, provider);
       const token = await data.user.getIdToken();
       const avatar = data.user.photoURL;
       const name = data.user.displayName;
 
       if (token && name) {
-
         document.cookie = `token=${token}; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/`;
         document.cookie = `avatar=${avatar}; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/`;
         document.cookie = `name=${name}; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/`;
@@ -43,4 +43,4 @@ export default function BtnGoogle() {
     </div>
   );
 }
-// background-image: linear-gradient(to right, #4285F4, #34A853, #FBBC05, #EA4335);
+

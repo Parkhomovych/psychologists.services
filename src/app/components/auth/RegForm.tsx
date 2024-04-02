@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function RegForm() {
-  const [showPass, setshowPass] = useState(false);
-  const hendleEye = () => {
-    setshowPass((pS) => !pS);
+  const [showPass, setShowPass] = useState(false);
+  const handlerEye = () => {
+    setShowPass((pS) => !pS);
   };
 
   const router = useRouter();
@@ -53,7 +53,7 @@ export default function RegForm() {
             className="input w-[438px] mb-10"
             required
           />
-          <Eye hendleEye={hendleEye} showPass={showPass} />
+          <Eye handlerEye={handlerEye} showPass={showPass} />
         </div>
         <button className=" w-[438px] h-[52px] flex items-center justify-center bg-green  rounded-[30px] hover:bg-activeGreen animateColor">
           <span className=" font-medium text-base text-white">

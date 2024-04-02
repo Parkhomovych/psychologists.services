@@ -31,7 +31,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
     }
   };
 
-  const murkupTime = () => {
+  const markUpTime = () => {
     const times = [];
     for (let hour = 9; hour <= 17; hour++) {
       for (let minute = 0; minute < 60; minute += 30) {
@@ -123,7 +123,7 @@ export default function MakeModal({ name, image, closeModal }: Props) {
                     onClick={changeTime}
                     className=" w-[119px] h-[110px] flex flex-col items-center overflow-y-auto"
                   >
-                    {murkupTime()}
+                    {markUpTime()}
                   </ul>
                 </div>
               </PresencePosition>

@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginForm() {
-  const [showPass, setshowPass] = useState(false);
-  const hendleEye = () => {
-    setshowPass((pS) => !pS);
+  const [showPass, setShowPass] = useState(false);
+  const handlerEye = () => {
+    setShowPass((pS) => !pS);
   };
 
   const router = useRouter();
@@ -39,7 +39,7 @@ export default function LoginForm() {
             className="input w-[438px] mb-10"
             required
           />
-          <Eye hendleEye={hendleEye} showPass={showPass} />
+          <Eye handlerEye={handlerEye} showPass={showPass} />
         </div>
         <button
           type="submit"

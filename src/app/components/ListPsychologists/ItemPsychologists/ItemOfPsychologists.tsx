@@ -1,13 +1,14 @@
 import { IoIosStar } from "react-icons/io";
-import { Therapist } from "../ListOfPsichologists";
+
 import Image from "next/image";
 import BtnFavorite from "./BtnFavorite";
 import BtnReadMore from "./BtnReadMore";
+import { Therapist } from "@/Types/Therapist";
 
 type Props = {
   item: Therapist;
 };
-export default function ItemOfPsichologists({ item }: Props) {
+export default function ItemOfPsychologists({ item }: Props) {
   return (
     <li className="flex gap-x-6 p-6 w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
       <div>

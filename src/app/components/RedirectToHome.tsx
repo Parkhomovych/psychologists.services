@@ -4,20 +4,20 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function RedirectToHome() {
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState<number>(10);
   const router = useRouter();
 
   useEffect(() => {
-    const idTimeout: NodeJS.Timeout = setInterval(() => {
+    const idInterval: NodeJS.Timeout = setInterval(() => {
       setTime((pS: number) => pS - 1);
     }, 1000);
 
-    const idItnetval: NodeJS.Timeout = setTimeout(() => {
+    const idTimeout: NodeJS.Timeout = setTimeout(() => {
       router.push("/");
     }, 10000);
 
     return () => {
-      clearInterval(idItnetval);
+      clearInterval(idInterval);
       clearTimeout(idTimeout);
     };
   }, [router]);

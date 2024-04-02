@@ -1,9 +1,9 @@
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-type Porops = {
+type Props = {
   isOpen: boolean;
   style: string;
 };
-export default function IoIosArrow({ isOpen, style }: Porops) {
+export default function IoIosArrow({ isOpen, style }: Props) {
   return (
     <>
       {isOpen ? (
