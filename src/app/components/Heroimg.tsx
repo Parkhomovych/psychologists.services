@@ -4,7 +4,7 @@ import { FaQuestion } from "react-icons/fa6";
 import { IoMdPeople } from "react-icons/io";
 import { BsCheckLg } from "react-icons/bs";
 
-export default function HeroImg() {
+export  function HeroImg() {
   return (
     <div className="relative">
       <Image
