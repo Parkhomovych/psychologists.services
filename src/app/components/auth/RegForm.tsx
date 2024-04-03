@@ -1,36 +1,36 @@
 "use client";
 import { useState } from "react";
 import Eye from "./Eye";
-import { registration } from "@/firebase/auth/email-pass";
-import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { useUserAuth } from "@/app/context/AuthContext";
 
 export default function RegForm() {
   const [showPass, setShowPass] = useState(false);
   const handlerEye = () => {
     setShowPass((pS) => !pS);
   };
+  const { signUp } = useUserAuth();
 
-  const router = useRouter();
-  async function handleReg(e: FormData) {
-    const data = await registration(e);
-    if (data === "success") router.push("/psychologists");
+  // const router = useRouter();
+  // async function handleReg(e: FormData) {
+  //   const data = await registration(e);
+  //   if (data === "success") router.push("/psychologists");
 
-    if (data === "auth/email-already-in-use") {
-      toast.error("Email already in use");
-    }
-    if (data === "auth/weak-password") {
-      toast.error("Weak password");
-    }
-    if (data === "auth/invalid-email") {
-      toast.error("Email is not valid");
-    }
-  }
+  //   if (data === "auth/email-already-in-use") {
+  //     toast.error("Email already in use");
+  //   }
+  //   if (data === "auth/weak-password") {
+  //     toast.error("Weak password");
+  //   }
+  //   if (data === "auth/invalid-email") {
+  //     toast.error("Email is not valid");
+  //   }
+  // }
 
   return (
     <>
       <Toaster />
-      <form action={handleReg} className="flex flex-wrap mb-7">
+      <form onSubmit={signUp} className="flex flex-wrap mb-7">
         <input
           type="text"
           name="name"

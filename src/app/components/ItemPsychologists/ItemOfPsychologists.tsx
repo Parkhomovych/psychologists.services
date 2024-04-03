@@ -10,7 +10,7 @@ type Props = {
 };
 export default function ItemOfPsychologists({ item }: Props) {
   return (
-    <li className="flex gap-x-6 p-6 w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
+    <li className="flex gap-x-6 p-6 max-w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
       <div>
         <div className="relative flex items-center justify-center w-[120px] h-[120px] rounded-[30px] border-solid border-2 border-[#54be9633] ">
           <Image
@@ -26,8 +26,8 @@ export default function ItemOfPsychologists({ item }: Props) {
         </div>
       </div>
       <div>
-        <div className=" flex justify-between">
-          <p className="mb-1 font-medium text-base text-white06 dark:text-gray-400">
+        <div className=" flex justify-between items-center">
+          <p className=" font-medium text-base text-white06 dark:text-gray-400">
             Psychologist
           </p>
           <div className="flex items-center">
@@ -79,7 +79,7 @@ export default function ItemOfPsychologists({ item }: Props) {
             </p>
           </li>
         </ul>
-        <p className=" mb-3.5 text-sm text-white06 dark:text-gray-400  font-normal">
+        <p className=" mb-3.5 text-sm text-white06 dark:text-gray-400  font-normal hidden md:block">
           {item.about}
         </p>
         <BtnReadMore

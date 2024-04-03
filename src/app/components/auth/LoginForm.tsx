@@ -1,33 +1,20 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import Eye from "./Eye";
-import { login } from "@/firebase/auth/email-pass";
-import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { useUserAuth } from "@/app/context/AuthContext";
 
 export default function LoginForm() {
   const [showPass, setShowPass] = useState(false);
   const handlerEye = () => {
     setShowPass((pS) => !pS);
   };
-
-  const router = useRouter();
-  function handleLog(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const emailInput = form.elements.namedItem("email") as HTMLInputElement | null;
-    const passwordInput = form.elements.namedItem("password") as HTMLInputElement | null;
-  
-    if (emailInput && passwordInput) {
-      console.log(emailInput.value);
-      console.log(passwordInput.value);
-    }
-  }
+  const { signIn } = useUserAuth();
   return (
     <>
       <Toaster />
-      <form onSubmit={handleLog} className="flex flex-wrap mb-7 ">
+      <form onSubmit={signIn} className="flex flex-wrap mb-7 ">
         <input
           type="email"
           name="email"
