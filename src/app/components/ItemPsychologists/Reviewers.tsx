@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { IoIosStar } from "react-icons/io";
-import MakeModal from "../../MakeModal";
-import PresencePosition from "../../Animate/PresencePosition";
+import MakeModal from "../Modal/MakeModal";
+import PresencePosition from "../Animate/PresencePosition";
 import { Review } from "@/Types/Therapist";
 
 export type ReviewersProps = {

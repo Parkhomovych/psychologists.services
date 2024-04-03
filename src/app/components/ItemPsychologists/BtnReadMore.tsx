@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import IoIosArrow from "../../IoIosArrow";
-import PresenceHeight from "../../Animate/PresenceHeight";
+import IoIosArrow from "../Icons/IoIosArrow";
+import PresenceHeight from "../Animate/PresenceHeight";
 import Reviewers, { ReviewersProps } from "./Reviewers";
 
 export default function BtnReadMore({ reviews, name, image }: ReviewersProps) {

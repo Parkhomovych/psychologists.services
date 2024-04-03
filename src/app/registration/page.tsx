@@ -1,6 +1,10 @@
 
 import RegForm from "@/app/components/auth/RegForm";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Registration",
+};
 export default function Registration() {
   return (
     <div className="w-[566px] m-auto p-16 flex flex-col">

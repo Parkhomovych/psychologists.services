@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 export default function useValueFilter() {
-    let result
+    let result = "Show all";
     const pathname = usePathname();
     (() => {
         switch (pathname) {
@@ -22,6 +22,5 @@ export default function useValueFilter() {
                 result = "Show all";
         }
     })()
-
     return result
 }

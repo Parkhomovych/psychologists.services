@@ -1,7 +1,7 @@
 "use client";
 
-import ItemOfPsychologists from "./ItemPsychologists/ItemOfPsychologists";
-import Filters from "./ItemPsychologists/Filter/Filters";
+import ItemOfPsychologists from "../ItemPsychologists/ItemOfPsychologists";
+import Filters from "../Filter/Filters";
 import { Therapist } from "@/Types/Therapist";
 import { useFilter } from "@/hooks/Filters/useFilter";
 

@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import { LuClock4 } from "react-icons/lu";
 import Image from "next/image";
 import { useState } from "react";
-import PresencePosition from "./Animate/PresencePosition";
+import PresencePosition from "../Animate/PresencePosition";
 
 type Props = {
   name: string;

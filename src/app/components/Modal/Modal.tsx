@@ -1,4 +1,4 @@
-import IconCloseModal from "./IconCloseModal";
+import IconCloseModal from "../Icons/IconCloseModal";
 import { ReactNode, useEffect } from "react";
 
 type Props = {

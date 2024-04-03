@@ -1,12 +1,12 @@
 "use client";
-import { logout } from "@/firebase/auth/email-pass";
+import { useUserAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function LogOut() {
   const router = useRouter();
-
+  const { logOut } = useUserAuth();
   function handleLogout(e: any) {
-    logout();
+    logOut();
     router.push("/");
   }
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import NavLink from "./NavLink";
-import { cookies } from "next/headers";
+import { useUserAuth } from "@/app/context/AuthContext";
+import { User } from "firebase/auth";
 
 export default function Navigation() {
-  const token = cookies().get("token")?.value;
-
+  const { user } = useUserAuth();
   return (
     <nav>
       <ul className="flex gap-x-10">
@@ -14,7 +14,11 @@ export default function Navigation() {
         <li>
           <NavLink href="/psychologists">Psychologists</NavLink>
         </li>
-        {token && <NavLink href="/favorites">Favorites</NavLink>}
+        {user && (
+          <li>
+            <NavLink href="/favorites">Favorites</NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

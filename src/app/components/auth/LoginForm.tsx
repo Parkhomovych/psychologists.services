@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Eye from "./Eye";
 import { login } from "@/firebase/auth/email-pass";
 import { useRouter } from "next/navigation";
@@ -13,17 +13,21 @@ export default function LoginForm() {
   };
 
   const router = useRouter();
-  async function handleLog(e: FormData) {
-    const data = await login(e);
-    if (data === "success") router.push("/psychologists");
-    if (data === "auth/invalid-credential") {
-      toast.error("Email or password is not valid");
+  function handleLog(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const emailInput = form.elements.namedItem("email") as HTMLInputElement | null;
+    const passwordInput = form.elements.namedItem("password") as HTMLInputElement | null;
+  
+    if (emailInput && passwordInput) {
+      console.log(emailInput.value);
+      console.log(passwordInput.value);
     }
   }
   return (
     <>
       <Toaster />
-      <form action={handleLog} className="flex flex-wrap mb-7 ">
+      <form onSubmit={handleLog} className="flex flex-wrap mb-7 ">
         <input
           type="email"
           name="email"

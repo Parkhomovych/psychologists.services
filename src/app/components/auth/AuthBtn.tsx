@@ -1,28 +1,29 @@
-import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import LogOut from "./LogOut";
+import { useUserAuth } from "@/app/context/AuthContext";
+import BtnGoogle from "./BtnGoogle";
 
 export default function AuthBtn() {
-  const name = cookies().get("name")?.value;
-  const avatar = cookies().get("avatar")?.value;
+  const { user } = useUserAuth();
 
   return (
     <div>
-      {name ? (
-        <div className=" flex items-center gap-x-10">
+      {user ? (
+        <div className=" flex items-center gap-x-6">
           <Image
             width={`40`}
             height={`40`}
             alt=""
-            src={avatar || "/svg/user.svg"}
+            src={user.photoURL || "/svg/user.svg"}
             className=" rounded-[10px]"
           />
-          <p>{String(name)}</p>
+          <span className=" text-xs">{user.displayName}</span>
           <LogOut />
         </div>
       ) : (
         <div className=" flex items-center gap-x-3">
+          <BtnGoogle />
           <Link
             href={`/login`}
             className="w-30 h-12  py-3 px-9 text-black dark:text-gray-50 leading-5 border-white02 dark:border-gray-600 border rounded-full text-base font-medium  hover:text-activeGreen active:text-activeGree hover:border-activeGreen active:border-activeGreen animateColor "

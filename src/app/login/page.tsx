@@ -1,6 +1,11 @@
 import LoginForm from "@/app/components/auth/LoginForm";
 
-export default async function page() {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login",
+};
+export default async function Login() {
   return (
     <div className="w-[566px] m-auto p-16">
       <h2 className="mb-5 font-medium text-4xl text-black dark:text-gray-50">

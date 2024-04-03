@@ -1,8 +1,8 @@
 'use server'
 
-import { app } from "@/firebase/config";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { cookies } from "next/headers";
+import { auth } from "@/firebase/config";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+
 
 export async function registration(formData: FormData,) {
   const name = formData.get('name') as string
@@ -11,8 +11,6 @@ export async function registration(formData: FormData,) {
 
   if (name && email && password) {
     try {
-      const auth = getAuth(app);
-
       const data = await createUserWithEmailAndPassword(auth, email, password)
       const user = data.user
 
@@ -20,9 +18,9 @@ export async function registration(formData: FormData,) {
       if (user) {
         await updateProfile(user, { displayName: name })
 
-        cookies().set('name', name || "", { httpOnly: true })
-        cookies().set('token', token || "", { httpOnly: true })
-        cookies().set('avatar', user?.photoURL || "", { httpOnly: true })
+        // cookies().set('name', name || "", { httpOnly: true })
+        // cookies().set('token', token || "", { httpOnly: true })
+        // cookies().set('avatar', user?.photoURL || "", { httpOnly: true })
 
         return 'success'
       }
@@ -48,15 +46,13 @@ export async function login(formData: FormData) {
 
   if (email && password) {
     try {
-      const auth = getAuth(app);
+
       const data = await signInWithEmailAndPassword(auth, email, password)
       const user = data.user
       const token = await user.getIdToken()
-
-
-      cookies().set('token', token || "", { httpOnly: true })
-      cookies().set('name', user?.displayName || "", { httpOnly: true })
-      cookies().set('avatar', user?.photoURL || "", { httpOnly: true })
+      // cookies().set('token', token || "", { httpOnly: true })
+      // cookies().set('name', user?.displayName || "", { httpOnly: true })
+      // cookies().set('avatar', user?.photoURL || "", { httpOnly: true })
 
       return 'success'
     } catch (error: any) {
@@ -65,18 +61,5 @@ export async function login(formData: FormData) {
       }
       console.error(error);
     }
-  }
-}
-
-export async function logout() {
-  try {
-    const auth = getAuth(app);
-    signOut(auth)
-    cookies().delete('token')
-    cookies().delete('name')
-    cookies().delete('avatar')
-  } catch (error) {
-    console.error(error);
-
   }
 }
