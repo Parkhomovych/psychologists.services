@@ -1,9 +1,8 @@
+import { FC } from "react";
+import { IoIosArrowProps } from "@/Types/ComponentProps";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-type Props = {
-  isOpen: boolean;
-  style: string;
-};
-export default function IoIosArrow({ isOpen, style }: Props) {
+
+const IoIosArrow: FC<IoIosArrowProps> = ({ isOpen, style }) => {
   return (
     <>
       {isOpen ? (
@@ -13,4 +12,6 @@ export default function IoIosArrow({ isOpen, style }: Props) {
       )}
     </>
   );
-}
+};
+
+export default IoIosArrow;

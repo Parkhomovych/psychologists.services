@@ -1,12 +1,10 @@
 import {
-  FormEvent,
   ReactNode,
   createContext,
   useContext,
   useEffect,
   useState,
 } from "react";
-import { auth } from "@/firebase/config";
 import {
   GoogleAuthProvider,
   User,
@@ -17,6 +15,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { auth } from "@/firebase/config";
 import { AuthContextType } from "@/Types/AuthContext";
 import { useRouter } from "next/navigation";
 
@@ -26,25 +25,11 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
-  const signUp = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      elements: {
-        name: { value: string };
-        email: { value: string };
-        password: { value: string };
-      };
-    };
-    const { name, email, password } = target.elements;
-
-    if (name.value.trim() && email.value.trim() && password.value.trim()) {
-      const createUser = createUserWithEmailAndPassword(
-        auth,
-        email.value,
-        password.value
-      );
+  const signUp = (name: string, email: string, password: string) => {
+    if (name.trim() && email.trim() && password.trim()) {
+      const createUser = createUserWithEmailAndPassword(auth, email, password);
       const updateUser = createUser.then((data) =>
-        updateProfile(data.user, { displayName: name.value })
+        updateProfile(data.user, { displayName: name })
       );
       Promise.all([createUser, updateUser]).then((data) => {
         router.push("/psychologists");
@@ -52,18 +37,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const signIn = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      elements: {
-        email: { value: string };
-        password: { value: string };
-      };
-    };
-    const { email, password } = target.elements;
-
-    if (email.value.trim() && password.value.trim()) {
-      signInWithEmailAndPassword(auth, email.value, password.value)
+  const signIn = (email: string, password: string) => {
+    if (email.trim() && password.trim()) {
+      signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           router.push("/psychologists");
         })
@@ -92,7 +68,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, googleSingIn, logOut, signIn, signUp }}
+      value={{ user, signUp, signIn, logOut, googleSingIn }}
     >
       {children}
     </AuthContext.Provider>

@@ -1,12 +1,10 @@
-import { getPsychologists } from "@/firebase/database/getPsychologists";
-import ListOfPsychologists from "../components/ListPsychologists/ListOfPsychologists";
+import { getPsychologists } from "@/firebase/db/getPsychologists";
+import ListPsychologists from "../components/ListPsychologists/ListOfPsychologists";
+import { FC } from "react";
 
-export default async function Psychologists() {
+const Psychologists: FC = async () => {
   const data = await getPsychologists();
 
-  return (
-    <>
-      <ListOfPsychologists data={data} />
-    </>
-  );
-}
+  return <ListPsychologists data={data} />;
+};
+export default Psychologists;

@@ -1,16 +1,14 @@
 "use client";
+
+import { FC } from "react";
+import { NavLinkProps } from "@/Types/ComponentProps";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
 
-import React from "react";
-
-export interface NavLinkProps {
-  children: React.ReactNode;
-  href: string;
-}
-export default function NavLink({ href, children }: NavLinkProps) {
+const NavLink: FC<NavLinkProps> = ({ children, href }) => {
   const path = usePathname();
+
   return (
     <Link
       className={clsx(
@@ -26,4 +24,6 @@ export default function NavLink({ href, children }: NavLinkProps) {
       {children}
     </Link>
   );
-}
+};
+
+export default NavLink;

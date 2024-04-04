@@ -1,11 +1,13 @@
 "use client";
 
-import ItemOfPsychologists from "../ItemPsychologists/ItemOfPsychologists";
-import Filters from "../Filter/Filters";
+import { FC } from "react";
+import { ListPsychologistsProps } from "@/Types/ComponentProps";
 import { Therapist } from "@/Types/Therapist";
+import ItemPsychologists from "../ItemPsychologists/ItemPsychologists";
+import Filters from "../Filter/Filters";
 import { useFilter } from "@/hooks/Filters/useFilter";
 
-export default function ListOfPsychologists({ data }: any) {
+const ListPsychologists: FC<ListPsychologistsProps> = ({ data }) => {
   const cards = useFilter(data);
 
   return (
@@ -13,7 +15,7 @@ export default function ListOfPsychologists({ data }: any) {
       <Filters />
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
         {cards.map((item: Therapist) => {
-          return <ItemOfPsychologists key={item.id} item={item} />;
+          return <ItemPsychologists key={item.id} item={item} />;
         })}
       </ul>
       <button
@@ -24,4 +26,6 @@ export default function ListOfPsychologists({ data }: any) {
       </button>
     </>
   );
-}
+};
+
+export default ListPsychologists;

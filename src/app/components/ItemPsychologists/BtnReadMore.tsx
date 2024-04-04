@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FC } from "react";
 import IoIosArrow from "../Icons/IoIosArrow";
 import PresenceHeight from "../Animate/PresenceHeight";
-import Reviewers, { ReviewersProps } from "./Reviewers";
+import Reviewers from "./Reviewers";
+import { ReviewersProps } from "@/Types/ComponentProps";
 
-export default function BtnReadMore({ reviews, name, image }: ReviewersProps) {
+const BtnReadMore: FC<ReviewersProps> = ({ reviews, name, image }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -23,4 +24,6 @@ export default function BtnReadMore({ reviews, name, image }: ReviewersProps) {
       </PresenceHeight>
     </>
   );
-}
+};
+
+export default BtnReadMore;

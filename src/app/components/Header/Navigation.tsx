@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import NavLink from "./NavLink";
 import { useUserAuth } from "@/app/context/AuthContext";
-import { User } from "firebase/auth";
 
-export default function Navigation() {
+const Navigation: FC = () => {
   const { user } = useUserAuth();
+
   return (
     <nav>
       <ul className="flex gap-x-10">
@@ -22,4 +22,6 @@ export default function Navigation() {
       </ul>
     </nav>
   );
-}
+};
+
+export default Navigation;

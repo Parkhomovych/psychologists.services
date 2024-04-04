@@ -1,17 +1,20 @@
 "use client";
-import { useState } from "react";
+
+import { FC, MouseEvent, useState } from "react";
 import FiltersList from "./FiltersList";
 import IoIosArrow from "../Icons/IoIosArrow";
 import PresencePosition from "../Animate/PresencePosition";
 import useValueFilter from "@/hooks/Filters/useValueFilter";
 
-type TagName = "INPUT" | "A" | "LI" | "svg" | "path";
 
-export default function Filters() {
+
+const Filters: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const handlerOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const tag: TagName[] = ["INPUT", "A", "LI", "svg", "path"];
-    if (tag.includes((event.target as HTMLElement).tagName as TagName)) {
+
+  const handlerOpen = (event: MouseEvent<HTMLDivElement>) => {
+    const tag = ["INPUT", "A", "LI", "svg", "path"];
+
+    if (tag.includes((event.target as HTMLElement).tagName)) {
       setIsOpen((pS) => !pS);
     }
   };
@@ -41,4 +44,6 @@ export default function Filters() {
       </div>
     </div>
   );
-}
+};
+
+export default Filters;

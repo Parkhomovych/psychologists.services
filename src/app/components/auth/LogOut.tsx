@@ -1,8 +1,10 @@
 "use client";
+
+import { FC } from "react";
 import { useUserAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-export default function LogOut() {
+const LogOut: FC = () => {
   const router = useRouter();
   const { logOut } = useUserAuth();
   function handleLogout(e: any) {
@@ -17,4 +19,6 @@ export default function LogOut() {
       Log Out
     </button>
   );
-}
+};
+
+export default LogOut;

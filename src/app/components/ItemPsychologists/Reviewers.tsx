@@ -1,19 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useState, FC } from "react";
 import { IoIosStar } from "react-icons/io";
 import MakeModal from "../Modal/MakeModal";
 import PresencePosition from "../Animate/PresencePosition";
-import { Review } from "@/Types/Therapist";
+import { ReviewersProps } from "@/Types/ComponentProps";
 
-export type ReviewersProps = {
-  reviews: Review[];
-  name: string;
-  image: string;
-};
-export default function Reviewers({ reviews, name, image }: ReviewersProps) {
+const Reviewers: FC<ReviewersProps> = ({ reviews, name, image }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleModal = () => {
-    setIsOpen((pS: boolean) => !pS);
+    setIsOpen((pS) => !pS);
   };
   return (
     <>
@@ -53,4 +48,6 @@ export default function Reviewers({ reviews, name, image }: ReviewersProps) {
       </PresencePosition>
     </>
   );
-}
+};
+
+export default Reviewers;

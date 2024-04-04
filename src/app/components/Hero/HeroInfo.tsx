@@ -1,7 +1,8 @@
+import { FC } from "react";
 import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
 
-export default function HeroInfo() {
+const HeroInfo: FC = () => {
   return (
     <div className=" w-[595px]">
       <h1 className="mb-5 text-7xl font-semibold text-black dark:text-gray-50 leading-none">
@@ -23,4 +24,6 @@ export default function HeroInfo() {
       </Link>
     </div>
   );
-}
+};
+
+export default HeroInfo;

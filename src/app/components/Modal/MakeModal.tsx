@@ -1,63 +1,15 @@
 "use client";
-import Modal from "./Modal";
-import { LuClock4 } from "react-icons/lu";
+
+import { FC } from "react";
+import { MakeModalProps } from "@/Types/ComponentProps";
 import Image from "next/image";
-import { useState } from "react";
+import useMakeModal from "@/hooks/Modal/useMakeModal";
+import Modal from "./Modal";
 import PresencePosition from "../Animate/PresencePosition";
+import { LuClock4 } from "react-icons/lu";
 
-type Props = {
-  name: string;
-  image: string;
-  closeModal: () => void;
-};
-export default function MakeModal({ name, image, closeModal }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [time, setTime] = useState("00:00");
-
-  const changeIsOpen = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const arr = ["INPUT", "svg", "polyline", "circle"];
-    const target = e.target as HTMLElement;
-    if (arr.includes(target.tagName)) {
-      setIsOpen((pS) => !pS);
-    }
-  };
-  const changeTime = (e: React.MouseEvent<HTMLDListElement, MouseEvent>) => {
-    const target = e.target as HTMLElement;
-    if (target.tagName === "P") {
-      const value =
-        (e.target as HTMLElement).textContent?.replace(/\s/g, "") || "";
-      setTime(value);
-      setIsOpen((pS) => !pS);
-    }
-  };
-
-  const markUpTime = () => {
-    const times = [];
-    for (let hour = 9; hour <= 17; hour++) {
-      for (let minute = 0; minute < 60; minute += 30) {
-        const formattedHour = String(hour).padStart(2, "0");
-        const formattedMinute = String(minute).padStart(2, "0");
-        if (`${formattedHour}:${formattedMinute}` === time) {
-          times.push(
-            <li key={`${formattedHour}:${formattedMinute}`}>
-              <p className=" p-[2px] font-normal text-base dark:text-gray-50 text-black cursor-pointer">
-                {formattedHour} : {formattedMinute}
-              </p>
-            </li>
-          );
-          continue;
-        }
-        times.push(
-          <li key={`${formattedHour}:${formattedMinute}`}>
-            <p className=" p-[2px] font-normal text-base text-white02 hover:text-black dark:text-gray-400 dark:hover:text-gray-50 animateColor cursor-pointer">
-              {formattedHour} : {formattedMinute}
-            </p>
-          </li>
-        );
-      }
-    }
-    return times;
-  };
+const MakeModal: FC<MakeModalProps> = ({ name, image, closeModal }) => {
+  const { isOpen, time, changeIsOpen, changeTime, markUpTime } = useMakeModal();
 
   return (
     <Modal closeModal={closeModal} style="w-[600px]">
@@ -127,18 +79,6 @@ export default function MakeModal({ name, image, closeModal }: Props) {
                   </ul>
                 </div>
               </PresencePosition>
-              {/* <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute top-[61.23px] right-[-1px] w-[151px] h-[179px] p-4 bg-[#fff] dark:bg-gray-800 rounded-xl"
-                  >
-                  
-                  </motion.div>
-                )}
-              </AnimatePresence> */}
             </div>
           </div>
           <input
@@ -160,4 +100,6 @@ export default function MakeModal({ name, image, closeModal }: Props) {
       </div>
     </Modal>
   );
-}
+};
+
+export default MakeModal;

@@ -1,9 +1,9 @@
 "use client";
 
+import { FC, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
-export default function RedirectToHome() {
+const RedirectToHome: FC = () => {
   const [time, setTime] = useState<number>(10);
   const router = useRouter();
 
@@ -27,4 +27,6 @@ export default function RedirectToHome() {
       <span className=" text-green">&nbsp;{time}&nbsp;</span>seconds
     </p>
   );
-}
+};
+
+export default RedirectToHome;

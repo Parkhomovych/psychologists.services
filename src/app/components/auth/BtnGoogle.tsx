@@ -3,7 +3,7 @@
 import { useUserAuth } from "@/app/context/AuthContext";
 import { FcGoogle } from "react-icons/fc";
 
-export default function BtnGoogle() {
+const  BtnGoogle =() => {
   const { googleSingIn } = useUserAuth();
 
   return (
@@ -19,3 +19,6 @@ export default function BtnGoogle() {
     </div>
   );
 }
+
+
+export default BtnGoogle

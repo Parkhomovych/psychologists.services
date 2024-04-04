@@ -1,13 +1,12 @@
-import React from "react";
+import { FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { PresencePositionProps } from "@/Types/ComponentProps";
 
-export interface Presence {
-  children: React.ReactNode;
-  isOpen: boolean;
-  pos: "fixed" | "absolute";
-}
-
-export default function PresencePosition({ children, isOpen, pos }: Presence) {
+const PresencePosition: FC<PresencePositionProps> = ({
+  children,
+  isOpen,
+  pos,
+}) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -21,4 +20,6 @@ export default function PresencePosition({ children, isOpen, pos }: Presence) {
       )}
     </AnimatePresence>
   );
-}
+};
+
+export default PresencePosition;

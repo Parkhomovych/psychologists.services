@@ -1,15 +1,15 @@
+import { FC } from "react";
 import Image from "next/image";
-
 import { FaQuestion } from "react-icons/fa6";
 import { IoMdPeople } from "react-icons/io";
 import { BsCheckLg } from "react-icons/bs";
 
-export default function HeroImage() {
+const HeroImage: FC = () => {
   return (
     <div className="relative">
       <Image
         className="rounded-xl"
-        src='/image/hero.jpeg'
+        src="/image/hero.jpeg"
         alt="Psychologist"
         width={`464`}
         height={`526`}
@@ -20,7 +20,7 @@ export default function HeroImage() {
       </div>
       <div
         className="w-10 h-10 bg-yellow flex items-center justify-center absolute top-12 -right-8
-         rounded-[10px] rotate-15"
+       rounded-[10px] rotate-15"
       >
         <IoMdPeople className="w-5 h-5 fill-white" />
       </div>
@@ -37,4 +37,6 @@ export default function HeroImage() {
       </div>
     </div>
   );
-}
+};
+
+export default HeroImage;

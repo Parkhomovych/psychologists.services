@@ -1,12 +1,8 @@
+import { FC, useEffect } from "react";
+import { ModalProps } from "@/Types/ComponentProps";
 import IconCloseModal from "../Icons/IconCloseModal";
-import { ReactNode, useEffect } from "react";
 
-type Props = {
-  children: ReactNode;
-  style: string;
-  closeModal: () => void;
-};
-export default function Modal({ children, style, closeModal }: Props) {
+const Modal: FC<ModalProps> = ({ children, style, closeModal }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === "Escape") {
@@ -20,6 +16,7 @@ export default function Modal({ children, style, closeModal }: Props) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [closeModal]);
+
   return (
     <div
       className="backdrop overflow-auto"
@@ -35,4 +32,6 @@ export default function Modal({ children, style, closeModal }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default Modal;

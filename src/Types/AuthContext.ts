@@ -1,10 +1,9 @@
 import { User } from "firebase/auth";
-import { FormEvent } from "react";
 
 export interface AuthContextType {
   user: User | null;
   googleSingIn: () => void;
   logOut: () => void;
-  signIn: (e: FormEvent<HTMLFormElement>) => void;
-  signUp: (e: FormEvent<HTMLFormElement>) => void;
+  signIn: (email: string, password: string) => void;
+  signUp: (name: string, email: string, password: string) => void;
 }

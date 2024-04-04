@@ -1,15 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, FC } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 
-export default function BtnFavorite({ item }: any) {
+const BtnFavorite: FC = () => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const AddFavorite = () => {
-    setIsFavorite((pS) => !pS);
-  };
-  const DeleteFavorite = () => {
+  const handleFavorite = () => {
     setIsFavorite((pS) => !pS);
   };
 
@@ -17,7 +14,7 @@ export default function BtnFavorite({ item }: any) {
     <div>
       {isFavorite ? (
         <button
-          onClick={DeleteFavorite}
+          onClick={handleFavorite}
           type="button"
           className={` text-green hover:text-activeGreen hover:scale-125 transition-all duration-300`}
         >
@@ -25,7 +22,7 @@ export default function BtnFavorite({ item }: any) {
         </button>
       ) : (
         <button
-          onClick={AddFavorite}
+          onClick={handleFavorite}
           type="button"
           className={`text-green  hover:text-activeGreen hover:scale-125 transition-all duration-300`}
         >
@@ -34,4 +31,6 @@ export default function BtnFavorite({ item }: any) {
       )}
     </div>
   );
-}
+};
+
+export default BtnFavorite;

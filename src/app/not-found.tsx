@@ -1,7 +1,8 @@
+import { FC } from "react";
 import Link from "next/link";
 import RedirectToHome from "./components/RedirectToHome";
 
-export default function NotFound() {
+const NotFound: FC = () => {
   return (
     <main className="grid min-h-full place-items-center  px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">
@@ -21,4 +22,6 @@ export default function NotFound() {
       </div>
     </main>
   );
-}
+};
+
+export default NotFound;

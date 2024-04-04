@@ -3,12 +3,10 @@ import { IoIosStar } from "react-icons/io";
 import Image from "next/image";
 import BtnFavorite from "./BtnFavorite";
 import BtnReadMore from "./BtnReadMore";
-import { Therapist } from "@/Types/Therapist";
+import { FC } from "react";
+import { ItemPsychologistsProps } from "@/Types/ComponentProps";
 
-type Props = {
-  item: Therapist;
-};
-export default function ItemOfPsychologists({ item }: Props) {
+const ItemPsychologists: FC<ItemPsychologistsProps> = ({ item }) => {
   return (
     <li className="flex gap-x-6 p-6 max-w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
       <div>
@@ -39,7 +37,7 @@ export default function ItemOfPsychologists({ item }: Props) {
               Price / 1 hour:&nbsp;
               <span className="text-[#38cd3e]">{item.price_per_hour}$</span>
             </p>
-            <BtnFavorite item={item} />
+            <BtnFavorite />
           </div>
         </div>
         <h3 className="mb-6 font-medium text-2xl text-black dark:text-gray-50">
@@ -90,4 +88,6 @@ export default function ItemOfPsychologists({ item }: Props) {
       </div>
     </li>
   );
-}
+};
+
+export default ItemPsychologists;

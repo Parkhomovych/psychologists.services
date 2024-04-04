@@ -1,12 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { PresenceModalProps } from "@/Types/ComponentProps";
 
-export interface Presence {
-  children: React.ReactNode;
-  isOpen: boolean;
-}
-
-export default function PresenceModal({ children, isOpen }: Presence) {
+const PresenceModal: FC<PresenceModalProps> = ({ children, isOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -20,4 +16,6 @@ export default function PresenceModal({ children, isOpen }: Presence) {
       )}
     </AnimatePresence>
   );
-}
+};
+
+export default PresenceModal;

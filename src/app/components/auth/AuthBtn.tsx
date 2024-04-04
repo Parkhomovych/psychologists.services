@@ -1,10 +1,13 @@
+"use client";
+
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LogOut from "./LogOut";
 import { useUserAuth } from "@/app/context/AuthContext";
 import BtnGoogle from "./BtnGoogle";
 
-export default function AuthBtn() {
+const AuthBtn: FC = () => {
   const { user } = useUserAuth();
 
   return (
@@ -42,4 +45,6 @@ export default function AuthBtn() {
       )}
     </div>
   );
-}
+};
+
+export default AuthBtn;

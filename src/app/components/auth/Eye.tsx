@@ -1,10 +1,8 @@
+import { FC } from "react";
+import { EyeProps } from "@/Types/ComponentProps";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
-type Props = {
-    handlerEye: () => void;
-  showPass: boolean;
-};
-export default function Eye({ handlerEye, showPass }: Props) {
+const Eye: FC<EyeProps> = ({ handlerEye, showPass }) => {
   return (
     <button
       type="button"
@@ -18,4 +16,6 @@ export default function Eye({ handlerEye, showPass }: Props) {
       )}
     </button>
   );
-}
+};
+
+export default Eye;
