@@ -1,7 +1,7 @@
 import { DocumentData, collection, getDocs } from "firebase/firestore";
 import { db } from "../config";
 
-export async function getPsychologists() {
+export const getPsychologists = async () => {
     "use server";
     let docInfo: DocumentData = [];
     const querySnapshot = await getDocs(collection(db, "psychologists"));

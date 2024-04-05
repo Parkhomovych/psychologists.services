@@ -1,15 +1,22 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import LogOut from "./LogOut";
 import { useUserAuth } from "@/app/context/AuthContext";
 import BtnGoogle from "./BtnGoogle";
 
 const AuthBtn: FC = () => {
-  const { user } = useUserAuth();
-
+  const { user, logOut } = useUserAuth();
+  // const [delay, setDelay] = useState<boolean>(true);
+  // useEffect(() => {
+  //   const id = setTimeout(() => {
+  //     setDelay(false);
+  //   }, 350);
+  //   return () => {
+  //     clearTimeout(id);
+  //   };
+  // }, []);
   return (
     <div>
       {user ? (
@@ -22,7 +29,12 @@ const AuthBtn: FC = () => {
             className=" rounded-[10px]"
           />
           <span className=" text-xs">{user.displayName}</span>
-          <LogOut />
+          <button
+            onClick={logOut}
+            className="w-30 h-12  py-3 px-9 text-black dark:text-gray-50 leading-5 border-white02 dark:border-gray-600 border rounded-full text-base font-medium  hover:text-activeGreen active:text-activeGree hover:border-activeGreen active:border-activeGreen animateColor "
+          >
+            Log Out
+          </button>
         </div>
       ) : (
         <div className=" flex items-center gap-x-3">

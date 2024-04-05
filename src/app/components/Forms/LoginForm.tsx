@@ -1,25 +1,29 @@
 "use client";
 
-import { FC, useState } from "react";
-import Eye from "./Eye";
+import { FC, FormEvent, useState } from "react";
+import Eye from "../Header/Eye";
 import { useUserAuth } from "@/app/context/AuthContext";
 
 const LoginForm: FC = () => {
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signIn } = useUserAuth();
+
   const handlerEye = () => {
     setShowPass((pS) => !pS);
   };
-  const { signIn } = useUserAuth();
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    
+    signIn(email, password);
+    setEmail("");
+    setPassword("");
+    (e.target as HTMLFormElement).reset();
+  };
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        signIn(email, password);
-      }}
-      className="flex flex-wrap mb-7 "
-    >
+    <form onSubmit={handleSubmit} className="flex flex-wrap mb-7 ">
       <input
         type="email"
         name="email"

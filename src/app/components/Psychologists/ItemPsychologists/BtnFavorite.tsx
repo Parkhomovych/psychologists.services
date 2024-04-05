@@ -8,6 +8,7 @@ const BtnFavorite: FC = () => {
 
   const handleFavorite = () => {
     setIsFavorite((pS) => !pS);
+    console.log(1);
   };
 
   return (

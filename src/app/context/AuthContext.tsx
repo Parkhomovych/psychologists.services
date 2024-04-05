@@ -18,39 +18,55 @@ import {
 import { auth } from "@/firebase/config";
 import { AuthContextType } from "@/Types/AuthContext";
 import { useRouter } from "next/navigation";
+import { Toaster } from "react-hot-toast";
+import errorMessage from "@/hooks/errorMessage";
+import { RotatingLines } from "react-loader-spinner";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
-  const signUp = (name: string, email: string, password: string) => {
-    if (name.trim() && email.trim() && password.trim()) {
-      const createUser = createUserWithEmailAndPassword(auth, email, password);
-      const updateUser = createUser.then((data) =>
-        updateProfile(data.user, { displayName: name })
-      );
-      Promise.all([createUser, updateUser]).then((data) => {
+  const signUp = async (name: string, email: string, password: string) => {
+    try {
+      setLoading(true);
+      const data = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(data.user, { displayName: name });
+      router.push("/psychologists");
+    } catch (error: any) {
+      errorMessage(error.code);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signIn = async (email: string, password: string) => {
+    try {
+      setLoading(true);
+      if (email.trim() && password.trim()) {
+        await signInWithEmailAndPassword(auth, email, password);
         router.push("/psychologists");
-      });
+      }
+    } catch (error: any) {
+      errorMessage(error.code);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const signIn = (email: string, password: string) => {
-    if (email.trim() && password.trim()) {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          router.push("/psychologists");
-        })
-        .catch((rej) => {
-          console.log(rej.code);
-        });
+  const logOut = async () => {
+    try {
+      setLoading(true);
+      await signOut(auth);
+      router.push("/psychologists");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const logOut = () => {
-    signOut(auth);
   };
 
   const googleSingIn = () => {
@@ -70,7 +86,19 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     <AuthContext.Provider
       value={{ user, signUp, signIn, logOut, googleSingIn }}
     >
-      {children}
+      <Toaster />
+      {loading ? (
+        <div className=" h-screen flex items-center justify-center">
+          <RotatingLines
+            visible={true}
+            width="124"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+          />
+        </div>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 };

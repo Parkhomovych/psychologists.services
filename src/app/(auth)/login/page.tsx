@@ -1,4 +1,4 @@
-import LoginForm from "@/app/components/auth/LoginForm";
+import LoginForm from "@/app/components/Forms/LoginForm";
 import { Metadata } from "next";
 import { FC } from "react";
 

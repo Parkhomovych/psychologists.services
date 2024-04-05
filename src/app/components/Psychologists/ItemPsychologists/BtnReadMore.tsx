@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, FC } from "react";
-import IoIosArrow from "../Icons/IoIosArrow";
-import PresenceHeight from "../Animate/PresenceHeight";
+import IoIosArrow from "../../Icons/IoIosArrow";
+import PresenceHeight from "../../Animate/PresenceHeight";
 import Reviewers from "./Reviewers";
 import { ReviewersProps } from "@/Types/ComponentProps";
 

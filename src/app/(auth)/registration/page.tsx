@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Metadata } from "next";
-import RegForm from "@/app/components/auth/RegForm";
+import RegForm from "@/app/components/Forms/RegForm";
 
 export const metadata: Metadata = {
   title: "Registration",

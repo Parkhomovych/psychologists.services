@@ -1,4 +1,4 @@
-import ListPsychologists from "@/app/components/ListPsychologists/ListOfPsychologists";
+import ListPsychologists from "@/app/components/Psychologists/ListPsychologists/ListOfPsychologists";
 import { getPsychologists } from "@/firebase/db/getPsychologists";
 import { FC } from "react";
 

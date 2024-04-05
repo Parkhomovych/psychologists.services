@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useMakeModal = () => {
+const useMakeForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [time, setTime] = useState("00:00");
 
@@ -51,4 +51,4 @@ const useMakeModal = () => {
   return { isOpen, time, changeIsOpen, changeTime, markUpTime };
 };
 
-export default useMakeModal;
+export default useMakeForm;

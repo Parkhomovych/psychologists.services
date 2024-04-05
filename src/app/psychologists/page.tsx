@@ -1,5 +1,5 @@
 import { getPsychologists } from "@/firebase/db/getPsychologists";
-import ListPsychologists from "../components/ListPsychologists/ListOfPsychologists";
+import ListPsychologists from "../components/Psychologists/ListPsychologists/ListOfPsychologists";
 import { FC } from "react";
 
 const Psychologists: FC = async () => {

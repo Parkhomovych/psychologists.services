@@ -1,24 +1,25 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const RedirectToHome: FC = () => {
   const [time, setTime] = useState<number>(10);
   const router = useRouter();
-
+  const idInterval = useRef<NodeJS.Timeout>();
+  const idTimeout = useRef<NodeJS.Timeout>();
   useEffect(() => {
-    const idInterval: NodeJS.Timeout = setInterval(() => {
+    idInterval.current = setInterval(() => {
       setTime((pS: number) => pS - 1);
     }, 1000);
 
-    const idTimeout: NodeJS.Timeout = setTimeout(() => {
+    idTimeout.current = setTimeout(() => {
       router.push("/");
     }, 10000);
 
     return () => {
-      clearInterval(idInterval);
-      clearTimeout(idTimeout);
+      clearInterval(idInterval.current);
+      clearTimeout(idTimeout.current);
     };
   }, [router]);
   return (

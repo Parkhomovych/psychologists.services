@@ -1,8 +1,8 @@
 "use client";
 import { useState, FC } from "react";
 import { IoIosStar } from "react-icons/io";
-import MakeModal from "../Modal/MakeModal";
-import PresencePosition from "../Animate/PresencePosition";
+import MakeModal from "../../Modal/MakeModal";
+import PresencePosition from "../../Animate/PresencePosition";
 import { ReviewersProps } from "@/Types/ComponentProps";
 
 const Reviewers: FC<ReviewersProps> = ({ reviews, name, image }) => {

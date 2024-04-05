@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { LayoutProps } from "@/Types/LayoutType";
 
 export const metadata: Metadata = {
-  title: "Psychologists",
+  title: "Favorites",
 };
 
 const Layout: FC<Readonly<LayoutProps>> = ({ children }) => {

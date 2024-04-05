@@ -4,7 +4,7 @@ import { FC } from "react";
 import { ListPsychologistsProps } from "@/Types/ComponentProps";
 import { Therapist } from "@/Types/Therapist";
 import ItemPsychologists from "../ItemPsychologists/ItemPsychologists";
-import Filters from "../Filter/Filters";
+import Filters from "../../Filter/Filters";
 import { useFilter } from "@/hooks/Filters/useFilter";
 
 const ListPsychologists: FC<ListPsychologistsProps> = ({ data }) => {

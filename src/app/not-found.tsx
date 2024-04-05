@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import RedirectToHome from "./components/RedirectToHome";
+import RedirectToHome from "./components/Helpers/RedirectToHome";
 
 const NotFound: FC = () => {
   return (

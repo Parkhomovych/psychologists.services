@@ -1,7 +1,7 @@
 "use client";
 
-import { FC, useState } from "react";
-import Eye from "./Eye";
+import { FC, FormEvent, useState } from "react";
+import Eye from "../Header/Eye";
 import { useUserAuth } from "@/app/context/AuthContext";
 
 const RegForm: FC = () => {
@@ -10,35 +10,23 @@ const RegForm: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { signUp } = useUserAuth();
+
   const handlerEye = () => {
     setShowPass((pS) => !pS);
   };
-  const { signUp } = useUserAuth();
-
-  // const router = useRouter();
-  // async function handleReg(e: FormData) {
-  //   const data = await registration(e);
-  //   if (data === "success") router.push("/psychologists");
-
-  //   if (data === "auth/email-already-in-use") {
-  //     toast.error("Email already in use");
-  //   }
-  //   if (data === "auth/weak-password") {
-  //     toast.error("Weak password");
-  //   }
-  //   if (data === "auth/invalid-email") {
-  //     toast.error("Email is not valid");
-  //   }
-  // }
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    
+    signUp(name, email, password);
+    setName("");
+    setEmail("");
+    setPassword("");
+    (e.target as HTMLFormElement).reset();
+  };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        signUp(name, email, password);
-      }}
-      className="flex flex-wrap mb-7"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-wrap mb-7">
       <input
         type="text"
         name="name"

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Navigation from "./Navigation";
 import Logo from "./Logo";
-import AuthBtn from "../auth/AuthBtn";
+import AuthBtn from "./AuthBtn";
 
 const Header: FC = () => {
   return (
