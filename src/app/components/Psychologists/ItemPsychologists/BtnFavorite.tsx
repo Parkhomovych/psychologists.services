@@ -1,16 +1,12 @@
 "use client";
-import { useState, FC } from "react";
+import { BtnFavorite } from "@/Types/ComponentProps";
+import useFavoriteStatus from "@/hooks/useFavoriteStatus";
+import { FC } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 
-const BtnFavorite: FC = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const handleFavorite = () => {
-    setIsFavorite((pS) => !pS);
-    console.log(1);
-  };
-
+const BtnFavorite: FC<BtnFavorite> = ({ id }) => {
+  const [isFavorite, handleFavorite] = useFavoriteStatus(id);
   return (
     <div>
       {isFavorite ? (

@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUserAuth } from "@/app/context/AuthContext";
@@ -8,15 +8,7 @@ import BtnGoogle from "./BtnGoogle";
 
 const AuthBtn: FC = () => {
   const { user, logOut } = useUserAuth();
-  // const [delay, setDelay] = useState<boolean>(true);
-  // useEffect(() => {
-  //   const id = setTimeout(() => {
-  //     setDelay(false);
-  //   }, 350);
-  //   return () => {
-  //     clearTimeout(id);
-  //   };
-  // }, []);
+
   return (
     <div>
       {user ? (

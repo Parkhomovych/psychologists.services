@@ -37,7 +37,7 @@ const ItemPsychologists: FC<ItemPsychologistsProps> = ({ item }) => {
               Price / 1 hour:&nbsp;
               <span className="text-[#38cd3e]">{item.price_per_hour}$</span>
             </p>
-            <BtnFavorite />
+            <BtnFavorite id={item.id} />
           </div>
         </div>
         <h3 className="mb-6 font-medium text-2xl text-black dark:text-gray-50">

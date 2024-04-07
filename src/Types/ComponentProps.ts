@@ -1,6 +1,7 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { Therapist } from "./Therapist";
 import { Review } from "@/Types/Therapist";
+import { User } from "firebase/auth";
 
 export interface PresenceModalProps {
     children: React.ReactNode;
@@ -48,3 +49,6 @@ export interface MakeModalProps {
     image: string;
     closeModal: () => void;
 };
+export interface BtnFavorite {
+    id: string
+}

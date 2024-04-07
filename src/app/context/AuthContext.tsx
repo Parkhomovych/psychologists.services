@@ -15,19 +15,19 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "@/firebase/config";
+import { auth, db } from "@/firebase/config";
 import { AuthContextType } from "@/Types/AuthContext";
 import { useRouter } from "next/navigation";
 import { Toaster } from "react-hot-toast";
 import errorMessage from "@/hooks/errorMessage";
 import { RotatingLines } from "react-loader-spinner";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
-
   const router = useRouter();
 
   const signUp = async (name: string, email: string, password: string) => {
@@ -35,6 +35,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       setLoading(true);
       const data = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(data.user, { displayName: name });
+
+      if (data.user) {
+        await setDoc(doc(db, "users", data.user.uid), { favorites: [] });
+      }
       router.push("/psychologists");
     } catch (error: any) {
       errorMessage(error.code);
@@ -69,9 +73,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const googleSingIn = () => {
+  const googleSingIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    const data = await signInWithPopup(auth, provider);
+    if (data.user.uid) {
+      await setDoc(doc(db, "users", data.user.uid), { favorites: [] });
+    }
   };
 
   useEffect(() => {
