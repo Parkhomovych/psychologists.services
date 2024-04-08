@@ -4,12 +4,16 @@ import { db } from "../config";
 export const getPsychologists = async () => {
     "use server";
     let docInfo: DocumentData = [];
-    const querySnapshot = await getDocs(collection(db, "psychologists"));
-    querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        data.id = doc.id
+    try {
+        const querySnapshot = await getDocs(collection(db, "psychologists"));
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            data.id = doc.id
 
-        docInfo.push(data);
-    });
+            docInfo.push(data);
+        });
+    } catch (error) {
+        console.error(error);
+    }
     return docInfo;
 }

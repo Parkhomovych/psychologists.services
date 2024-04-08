@@ -7,7 +7,6 @@ import Header from "./components/Header/Header";
 import { AuthContextProvider } from "./context/AuthContext";
 import { RotatingLines } from "react-loader-spinner";
 import { LayoutProps } from "@/Types/LayoutType";
-
 const inter = Inter({ subsets: ["latin"] });
 
 const RootLayout: FC<Readonly<LayoutProps>> = ({ children }) => {
@@ -15,7 +14,7 @@ const RootLayout: FC<Readonly<LayoutProps>> = ({ children }) => {
   useEffect(() => {
     const id = setTimeout(() => {
       setDelay(false);
-    }, 350);
+    }, 200);
     return () => {
       clearTimeout(id);
     };

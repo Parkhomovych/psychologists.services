@@ -1,32 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useUserAuth } from '@/app/context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
 import { addFavoriteStatus } from '@/firebase/db/addFavoriteStatus';
+import { Therapist } from '@/Types/Therapist';
 
-const useFavoriteStatus = (itemId: string): [boolean, () => void] => {
+const useFavoriteStatus = (item: Therapist): [boolean, () => void] => {
     const [isFavorite, setIsFavorite] = useState(false);
     const { user } = useUserAuth();
 
     useEffect(() => {
+        if (!user) return
         (async () => {
-            if (user) {
-                const docRef = doc(db, 'users', user.uid);
-                const docSnap = await getDoc(docRef);
-                const data = docSnap.data() as { favorites: string[] };
+            try {
+                const docUsers = doc(db, 'users', user.uid);
+                const { favorites } = (await getDoc(docUsers)).data() as { favorites: Therapist[] }
+                favorites.forEach((el) => {
+                    if (el.id === item.id) {
+                        setIsFavorite(true)
+                    }
+                })
 
-                if (Array.isArray(data.favorites) && data.favorites.includes(itemId)) {
-                    setIsFavorite(true);
-                }
+            } catch (error) {
+                console.error(error);
             }
         })()
 
-    }, [user, itemId]);
+    }, [item.id, user]);
 
     const handleFavorite = async () => {
         setIsFavorite((prevState) => !prevState);
         if (user) {
-            await addFavoriteStatus(user, isFavorite, itemId);
+            try {
+                await addFavoriteStatus(user, isFavorite, item);
+            } catch (error) {
+                console.error(error);
+
+            }
         }
     };
 

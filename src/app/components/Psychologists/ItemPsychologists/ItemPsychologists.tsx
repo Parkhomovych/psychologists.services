@@ -1,14 +1,18 @@
 import { IoIosStar } from "react-icons/io";
-
 import Image from "next/image";
 import BtnFavorite from "./BtnFavorite";
 import BtnReadMore from "./BtnReadMore";
 import { FC } from "react";
 import { ItemPsychologistsProps } from "@/Types/ComponentProps";
-
+import { motion } from "framer-motion";
 const ItemPsychologists: FC<ItemPsychologistsProps> = ({ item }) => {
   return (
-    <li className="flex gap-x-6 p-6 max-w-[1184px] bg-white dark:bg-gray-800 rounded-3xl">
+    <motion.li
+      initial={{ opacity: 0, x: -200 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.3}}
+      className="flex gap-x-6 p-6 max-w-[1184px] bg-white dark:bg-gray-800 rounded-3xl"
+    >
       <div>
         <div className="relative flex items-center justify-center w-[120px] h-[120px] rounded-[30px] border-solid border-2 border-[#54be9633] ">
           <Image
@@ -37,7 +41,7 @@ const ItemPsychologists: FC<ItemPsychologistsProps> = ({ item }) => {
               Price / 1 hour:&nbsp;
               <span className="text-[#38cd3e]">{item.price_per_hour}$</span>
             </p>
-            <BtnFavorite id={item.id} />
+            <BtnFavorite item={item} />
           </div>
         </div>
         <h3 className="mb-6 font-medium text-2xl text-black dark:text-gray-50">
@@ -86,7 +90,7 @@ const ItemPsychologists: FC<ItemPsychologistsProps> = ({ item }) => {
           image={item.avatar_url}
         />
       </div>
-    </li>
+    </motion.li>
   );
 };
 

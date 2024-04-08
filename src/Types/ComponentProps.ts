@@ -49,6 +49,6 @@ export interface MakeModalProps {
     image: string;
     closeModal: () => void;
 };
-export interface BtnFavorite {
-    id: string
+export interface BtnFavoriteProps {
+    item: Therapist
 }

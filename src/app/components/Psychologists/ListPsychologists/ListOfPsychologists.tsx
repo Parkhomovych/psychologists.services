@@ -9,13 +9,12 @@ import { useFilter } from "@/hooks/Filters/useFilter";
 
 const ListPsychologists: FC<ListPsychologistsProps> = ({ data }) => {
   const cards = useFilter(data);
-
   return (
     <>
       <Filters />
       <ul className="mb-16 flex flex-col gap-y-8  items-center">
         {cards.map((item: Therapist) => {
-          return <ItemPsychologists key={item.id} item={item} />;
+          return <ItemPsychologists key={item.name} item={item} />;
         })}
       </ul>
       <button
