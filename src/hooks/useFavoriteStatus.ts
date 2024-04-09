@@ -49,7 +49,10 @@ const useFavoriteStatus = (item: Therapist) => {
             await updateDoc(userInfo, {
                 favorites: arrayRemove(item),
             });
-            if (pathname === "/favorites") {
+
+            if (window.location.protocol === 'https:' && pathname === "/favorites") {
+                window.location.href = window.location.href;
+            } else {
                 window.location.reload();
             }
         } catch (error) {
