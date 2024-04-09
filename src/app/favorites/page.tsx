@@ -5,13 +5,11 @@ import { GetFavoritePsychologists } from "@/firebase/db/getFavoritePsychologists
 import { RotatingLines } from "react-loader-spinner";
 
 const Favorites: FC = () => {
-  const data = GetFavoritePsychologists();
+  const { data, loader } = GetFavoritePsychologists();
 
   return (
     <>
-      {data.length ? (
-        <ListPsychologists data={data} />
-      ) : (
+      {loader && (
         <div className=" h-screen flex items-center justify-center">
           <RotatingLines
             visible={true}
@@ -21,6 +19,8 @@ const Favorites: FC = () => {
           />
         </div>
       )}
+      {data.length !== 0 && <ListPsychologists data={data} />}
+      {data.length === 0 && <h2>Here is empty</h2>}
     </>
   );
 };

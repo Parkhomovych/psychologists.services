@@ -1,13 +1,14 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserAuth } from '@/app/context/AuthContext';
-import { doc, getDoc } from 'firebase/firestore';
+import { arrayRemove, arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
-import { addFavoriteStatus } from '@/firebase/db/addFavoriteStatus';
 import { Therapist } from '@/Types/Therapist';
+import { usePathname } from 'next/navigation';
 
-const useFavoriteStatus = (item: Therapist): [boolean, () => void] => {
+const useFavoriteStatus = (item: Therapist) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const { user } = useUserAuth();
+    const pathname = usePathname();
 
     useEffect(() => {
         if (!user) return
@@ -20,7 +21,6 @@ const useFavoriteStatus = (item: Therapist): [boolean, () => void] => {
                         setIsFavorite(true)
                     }
                 })
-
             } catch (error) {
                 console.error(error);
             }
@@ -28,19 +28,35 @@ const useFavoriteStatus = (item: Therapist): [boolean, () => void] => {
 
     }, [item.id, user]);
 
-    const handleFavorite = async () => {
-        setIsFavorite((prevState) => !prevState);
-        if (user) {
-            try {
-                await addFavoriteStatus(user, isFavorite, item);
-            } catch (error) {
-                console.error(error);
+    const addFavorite = async () => {
+        setIsFavorite(true);
+        if (!user) return
+        try {
+            const userInfo = doc(db, "users", user.uid);
+            await updateDoc(userInfo, {
+                favorites: arrayUnion(item)
+            });
+        } catch (error) {
+            console.error(error);
+        }
 
+    };
+    const removeFavorite = async () => {
+        setIsFavorite(false);
+        if (!user) return
+        try {
+            const userInfo = doc(db, "users", user.uid);
+            await updateDoc(userInfo, {
+                favorites: arrayRemove(item),
+            });
+            if (pathname === "/favorites") {
+                window.location.reload();
             }
+        } catch (error) {
+            console.error(error);
         }
     };
-
-    return [isFavorite, handleFavorite];
+    return { isFavorite, addFavorite, removeFavorite };
 };
 
 export default useFavoriteStatus;

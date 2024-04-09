@@ -6,8 +6,6 @@ import IoIosArrow from "../Icons/IoIosArrow";
 import PresencePosition from "../Animate/PresencePosition";
 import useValueFilter from "@/hooks/Filters/useValueFilter";
 
-
-
 const Filters: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,6 +17,7 @@ const Filters: FC = () => {
     }
   };
   const valueFilter = useValueFilter();
+
   return (
     <div className="mb-8">
       <p className="mb-2 font-medium text-black06 dark:text-gray-500">
